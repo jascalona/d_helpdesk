@@ -4,7 +4,7 @@ import './assets/CSS/index.css'
 import './assets/CSS/App.css'
 import './assets/CSS/btn_setting.css'
 import './assets/CSS/modal.css'
-
+import './assets/CSS/list_task.css'
 import App from './App.tsx'
 
 

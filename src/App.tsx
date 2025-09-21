@@ -1,18 +1,28 @@
 import { useState } from 'react'
-import logo from './assets/logo.png'
+import Logo from '@mui/icons-material/WifiTethering';
 import PersonIcon from '@mui/icons-material/Person';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import GroupsIcon from '@mui/icons-material/Groups';
 import AppsOutageIcon from '@mui/icons-material/AppsOutage';
 import HelpIcon from '@mui/icons-material/Help';
 
+
 import BackgroundLetterAvatars from './resources/avatar';
 import Notification from './resources/component/notification'
 import BtnSetting from './resources/component/btn_setting'
 import Modal from './resources/component/modal'
+import BasicTabs from './resources/component/tabs_activities'
+
 import AddIcon from '@mui/icons-material/Add';
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import MultilineChartIcon from '@mui/icons-material/MultilineChart';
+
+//Productos
+import SpeakerPhoneIcon from '@mui/icons-material/SpeakerPhone';
+import DevicesIcon from '@mui/icons-material/Devices';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+
+
 
 
 
@@ -38,7 +48,8 @@ function App() {
         {/* Sidebar */}
         <aside className="sidebar">
           <div className="logo">
-            HelpDesk
+            <Logo sx={{ fontSize: 24, marginRight: '5px' }} />
+            <p>Helpdesk</p>
           </div>
           <nav className="nav-menu">
             <ul>
@@ -119,24 +130,25 @@ function App() {
             <h1>Para ti</h1>
             <div className="recent-projects">
               <div className="section-header">
-                <h2>Proyectos recientes</h2>
-                <a href="#">Ver todos los proyectos</a>
+                <h2>Productos recientes</h2>
+                <a href="#" style={{fontSize: '14px'}}>Ver todos los Productos</a>
               </div>
+
               <div className="project-cards-container">
                 {/* Tarjeta 1 */}
                 <div className="project-card">
                   <div className="card-header">
-                    <span className="project-icon"></span>
-                    <h3>Jira Premium benefits</h3>
+                    <span className="project-icon"><SpeakerPhoneIcon /></span>
+                    <h3>Sypago</h3>
                   </div>
                   <p className="project-type">Software gestionado por el equipo</p>
                   <div className="project-stats">
                     <div className="stat-item">
-                      <h4>Mis asignaciones</h4>
+                      <h4>Pendientes</h4>
                       <span>2</span>
                     </div>
                     <div className="stat-item">
-                      <h4>Finalizado</h4>
+                      <h4>Incidencias</h4>
                       <span>1</span>
                     </div>
                   </div>
@@ -144,23 +156,45 @@ function App() {
                 {/* Tarjeta 2 */}
                 <div className="project-card">
                   <div className="card-header">
-                    <span className="project-icon"></span>
-                    <h3>Mi proyecto de scrum</h3>
+                    <span className="project-icon"><DevicesIcon /></span>
+                    <h3>SIMF</h3>
                   </div>
                   <p className="project-type">Software gestionado por la empresa</p>
                   <div className="project-stats">
                     <div className="stat-item">
-                      <h4>Mis asignaciones</h4>
+                      <h4>Pendientes</h4>
                       <span>0</span>
                     </div>
                     <div className="stat-item">
-                      <h4>Finalizado</h4>
+                      <h4>Incidencias</h4>
                       <span>0</span>
                     </div>
                   </div>
                 </div>
+                {/* Tarjeta 3 */}
+                <div className="project-card">
+                  <div className="card-header">
+                    <span className="project-icon"><CurrencyExchangeIcon /></span>
+                    <h3>SGLPAR</h3>
+                  </div>
+                  <p className="project-type">Software gestionado por la empresa</p>
+                  <div className="project-stats">
+                    <div className="stat-item">
+                      <h4>Pendientes</h4>
+                      <span>0</span>
+                    </div>
+                    <div className="stat-item">
+                      <h4>Incidencias</h4>
+                      <span>0</span>
+                    </div>
+                  </div>
+                </div>
+                
+
               </div>
             </div>
+
+            <BasicTabs />
 
             <div className="recent-activity">
               <div className="section-header">
