@@ -1,0 +1,115 @@
+.btn-open button{
+    display: flex;
+    align-items: center;
+    background: #5A639C;
+    outline: none; 
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+}
+
+.modal-header {     
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.cancel-button, .create-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.create-button {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/*Animacion*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  /* Agregamos el estado inicial de la transición */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.open {
+  /* Estado final de la transición cuando el modal está abierto */
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  /* Agregamos la animación de escalado */
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.open .modal-content {
+  /* Estado final de la transición del contenido */
+  transform: scale(1);
+}

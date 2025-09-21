@@ -1,0 +1,392 @@
+/* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Variables y Reseteo */
+:root {
+    --primary-color: #5A639C;
+    --background-color: #f4f5f7;
+    --sidebar-bg: #ffff;
+    --sidebar-text: #27364b;
+    --topbar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --border-color: #dfe1e6;
+    --text-color: #42526e;
+    --heading-color: #172b4d;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html,
+#root {
+    /* Asegura que el body, html y el contenedor raíz ocupen el 100% del viewport */
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    /* Deshabilitar el scroll del body para que el scroll lo gestione el contenedor principal */
+    overflow: hidden;
+}
+
+/* Contenedor principal para la disposición en grid */
+.container {
+    display: grid;
+    /* Ajusta la columna de la barra lateral y hace que el contenido principal sea flexible */
+    grid-template-columns: minmax(200px, 240px) 1fr;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 0.5rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    /* Asegura que la barra lateral no se desborde */
+    overflow-y: auto;
+    border-right: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 20px;
+    color: #172b4d;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 8px;
+}
+
+.nav-menu li {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 13px;
+    margin: 4px 0px;
+}
+
+.nav-menu li:hover {
+    background: #5A639C;
+    color: #fff;
+}
+
+.nav-menu li.active {
+    background-color: #5A639C;
+    color: #fff;
+}
+
+.nav-menu li .material-icons {
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+.dropdown-btn-icon {
+    border-radius: 5px;
+}
+
+.dropdown-btn-icon:hover {
+    background-color: #5a639c26;
+}
+
+.dropdown-btn-icon:active {
+    background-color: #5a639c26;
+
+}
+
+
+
+.section-title {
+    padding: 1rem 0 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: var(--sidebar-text);
+}
+
+.project-item,
+.team-item {
+    display: flex;
+    align-items: center;
+}
+
+.project-icon,
+.team-icon {
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    /* Placeholder */
+    border-radius: 4px;
+    margin-right: 0.5rem;
+}
+
+.feedback-link {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feedback-link a {
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 0.875rem;
+    display: block;
+    text-align: center;
+}
+
+/* Main Content Styles */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--topbar-bg);
+    padding: 8px 2rem;
+    border-bottom: 1px solid var(--border-color);
+    /* Evita que la barra superior se desplace */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--background-color);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    flex: 1;
+    /* Permite que la barra de búsqueda se expanda */
+    max-width: 400px;
+    /* Limita su tamaño máximo */
+}
+
+.search-bar input {
+    border: none;
+    background: none;
+    outline: none;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.search-bar .material-icons {
+    color: #5e6c84;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.create-btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.create-btn:hover {
+    background-color: #0045a5;
+}
+
+.premium-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.user-profile img {
+    border-radius: 50%;
+}
+
+.page-body {
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.page-body h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--heading-color);
+    margin-bottom: 2rem;
+}
+
+/* Recent Projects Section */
+.recent-projects {
+    margin-bottom: 2rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--heading-color);
+}
+
+.section-header a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.project-cards-container {
+    display: flex;
+    gap: 1.5rem;
+    /* Permite el scroll horizontal si hay muchas tarjetas */
+    overflow-x: auto;
+    padding-bottom: 1rem;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(9, 30, 66, 0.2), 0 0 1px rgba(9, 30, 66, 0.2);
+    padding: 1.5rem;
+    min-width: 300px;
+    flex-shrink: 0;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.card-header h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--heading-color);
+}
+
+.project-type {
+    font-size: 0.875rem;
+    color: #6b778c;
+    margin-bottom: 1rem;
+}
+
+.project-stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat-item h4 {
+    font-size: 0.75rem;
+    color: #5e6c84;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.stat-item span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
+/* Recent Activity Section */
+.recent-activity {
+    margin-top: 2rem;
+}
+
+.activity-list {
+    list-style: none;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.activity-item .material-icons {
+    color: #5e6c84;
+    margin-right: 1rem;
+    font-size: 20px;
+}
+
+.item-content h4 {
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+}
+
+.item-content p {
+    font-size: 0.875rem;
+    color: #6b778c;
+}
+
+.item-meta {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: #6b778c;
+    margin-top: 0.5rem;
+}
+
+/* Media Queries para diseño responsivo */
+
+@media (max-width: 768px) {
+    .container {
+        /* Pila la barra lateral y el contenido en una sola columna */
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    .sidebar {
+        /* Oculta la barra lateral por defecto en pantallas pequeñas */
+        display: none;
+    }
+
+    .topbar {
+        /* Ajusta el padding para pantallas pequeñas */
+        padding: 1rem;
+        /* El diseño de la barra superior cambia a apilado */
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .search-bar {
+        /* La barra de búsqueda ocupa todo el ancho */
+        max-width: none;
+    }
+
+    .topbar-actions {
+        /* Las acciones se apilan horizontalmente */
+        justify-content: space-between;
+    }
+
+    .project-cards-container {
+        /* Las tarjetas de proyectos se apilan verticalmente */
+        flex-direction: column;
+    }
+}

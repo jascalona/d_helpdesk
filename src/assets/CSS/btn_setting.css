@@ -1,0 +1,104 @@
+.dropdown-menu {
+  position: absolute;
+  background-color: #ffff;
+  min-width: 500px;
+  box-shadow: 0px 8px 16px 3px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style-type: none;
+  padding: 0;
+  margin: 16px auto;
+  border-radius: 5px;
+  right: 0;
+}
+
+.notification-header {
+  padding: 10px;
+  border-bottom: 1px solid rgba(93, 93, 93, 0.1);
+  margin: 0px 10px;
+  margin-bottom: 10px;
+}
+
+.notification-header h3 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.dropdown-menu  .alert-notification{
+  background-color: #7776b32b;
+  margin: 13px 10px;
+  border-radius: 5px;
+  color: #42526e;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: all 0.2s;
+  border-radius: 10px;
+  border-left: solid 6px #5A639C;
+  box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu .alert-notification small {
+  display: -webkit-box;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+
+.dropdown-menu .alert-notification:hover {
+  background-color: #7776b352;
+  box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-trigger {
+  background: none;
+  color: #42526e;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/*APARTADO DE ESTILOS PARA SETTING*/
+.dropdown-menu .option-setting{
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.dropdown-menu .option-setting:hover{
+  background-color: #7776b352;
+}
+
+.alert-setting{
+  margin-left: 15px;
+  line-height: normal;
+}
+
+
+
+
+
+
+/* --- Media Query para pantallas pequeñas (menos de 768px) --- */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    /* Elimina el ancho mínimo para que se ajuste al 100% */
+    min-width: unset;
+    /* Ajusta el ancho para que no ocupe toda la pantalla */
+    width: 90vw; /* El 90% del ancho de la ventana */
+    /* Lo centras horizontalmente */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Ajustas la posición vertical */
+    top: 60px; /* Un valor fijo para que no se pegue al trigger */
+  }
+}
