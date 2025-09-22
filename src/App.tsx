@@ -1,10 +1,13 @@
 import { useState } from 'react'
 
 import { Routes, Route } from 'react-router-dom';
-  
+
 import Inicio from './resources/Inicio';
 import ConfigGeneral from './resources/Config_general';
 
+//Para Rutas Absolutas
+import Themes from './resources/configG/Theme';
+import DesingOrgan from './resources/configG/design_organization';
 
 function App() {
 
@@ -12,8 +15,19 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Inicio />} />
-        <Route path="ConfigGeneral" element={<ConfigGeneral />} />
+
+        {/*RUTAS ABSOLUTAS*/}
+
+
+        <Route path="/ConfigGeneral/" element={<ConfigGeneral />}>
+          <Route path="Themes" element={<Themes />} />
+          <Route path="DesingOrgan" element={<DesingOrgan />} />
+        </Route>
+
       </Routes>
+
+
+
     </>
   )
 }

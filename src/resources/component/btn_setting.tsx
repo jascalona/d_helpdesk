@@ -33,14 +33,14 @@ const BtnSetting = () => {
                     </div>
 
                     <div className="option-setting"><PersonIcon />
-                        <li className='alert-setting'><Link to="ConfigGeneral">Configuracion General</Link><br />
+                        <li className='alert-setting'><Link to="ConfigGeneral/Themes">Configuracion General</Link><br />
                             <small>Ajusta tus preferencias personales</small>
                         </li>
                     </div>
 
 
                     <div className="option-setting"><AppsOutageIcon />
-                        <li className='alert-setting'><a href="#">Componentes </a><br />
+                        <li className='alert-setting'>Componentes <br />
                             <small>Gestiona y configura componentes para tus productos o proyectos.</small>
                         </li>
                     </div>

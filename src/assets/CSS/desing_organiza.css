@@ -1,0 +1,20 @@
+.container-empresa{
+    max-width: 90%;
+    margin: 5px auto;
+}
+
+.card-empresa{
+    margin-top: 30px;
+    border: 1px solid rgba(43, 42, 42, 0.177);
+}
+
+.header-card-empresa{
+    padding: 12px;
+    border-bottom: 1px solid rgba(43, 42, 42, 0.177);
+}
+
+.body-empresa{
+    padding: 15px;
+    background-color: #fff;
+}
+

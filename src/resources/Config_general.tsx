@@ -1,15 +1,17 @@
 import { useState } from "react";
+import { Routes, Route, Link, Outlet } from 'react-router-dom';
+
 
 import Logo from '@mui/icons-material/WifiTethering';
 import ContrastIcon from '@mui/icons-material/Contrast';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import GroupsIcon from '@mui/icons-material/Groups';
+import ReplyAllIcon from '@mui/icons-material/ReplyAll';
 
 
 import BackgroundLetterAvatars from './avatar';
-import Notification from './component/notification'
-import BtnSetting from './component/btn_setting'
-
+import Notification from './component/notification';
+import BtnSetting from './component/btn_setting';
 //Component Links
 import Themes from './configG/Theme';
 
@@ -28,16 +30,25 @@ function ConfigGeneral() {
                     </div>
                     <nav className="nav-menu">
                         <ul>
+                            <Link to="/" style={{color: '#42526e',fontWeight: 800, }}><li style={{fontSize: 20}} className="">
+                                <span className="material-icons"><ReplyAllIcon sx={{ fontSize: 20 }} /></span>
+                                Inicio
+                            </li></Link>
+
+
                             <span className="section-title">General</span>
 
-                            <li className="active">
+                            <Link to="Themes"><li className="active">
                                 <span className="material-icons"><ContrastIcon sx={{ fontSize: 20 }} /></span>
                                 Temas
-                            </li>
-                            <li>
-                                <span className="material-icons"><AccountTreeIcon sx={{ fontSize: 20 }} /></span>
-                                Diseño Organizacional
-                            </li>
+                            </li></Link>
+
+                            <Link to="DesingOrgan" style={{ color: '#42526e' }}>
+                                <li>
+                                    <span className="material-icons"><AccountTreeIcon sx={{ fontSize: 20 }} /></span>
+                                    Diseño Organizacional
+                                </li>
+                            </Link>
 
                             <br />
                             <span className="section-title">OTROS</span>
@@ -77,8 +88,8 @@ function ConfigGeneral() {
                     {/* Cuerpo de la página */}
                     <section className="page-body">
                         <h1>Configuracion General</h1>
-                        {/*LLAMAR AL COMPONENTE*/}
-                        <Themes />
+                        {/*¡Aqui se renderizaran los componentes de tus sub-rutas!*/}
+                        <Outlet />
                     </section>
                 </main>
             </div>
