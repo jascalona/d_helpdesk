@@ -23,12 +23,6 @@ import DevicesIcon from '@mui/icons-material/Devices';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 
 
-
-
-
-
-
-
 function App() {
   const [count, setCount] = useState(0)
 

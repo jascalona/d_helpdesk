@@ -1,8 +1,28 @@
-.content-task{
-    background: red;
+.content-task {
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-radius: 3px;
 }
 
-.content-task .task-item{
+.content-task:hover{
+    background: #5a639c26;
+}
+
+
+.text-task {
     display: flex;
-    justify-content: center;
+    align-items: center;
+}
+
+.text-task .text {
+    font-size: 12px;
+}
+
+.description-create {
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
 }

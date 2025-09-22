@@ -2,10 +2,7 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-
-import InfoIcon from '@mui/icons-material/Info';
-import Avatar from '../avatar'
-
+import ItemAsignaciones from './item_asignaciones';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -53,23 +50,9 @@ function BasicTabs() {
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
-                <div className="table-tabs">
-                    <span>AYER</span>
-
-                    <div className="task-item">
-                            <div className="content-task">
-                                <InfoIcon />
-                                <div className="text-task">
-                                    <h3>Migracion BD4</h3>
-                                    <span>123456 - Soporte de migracion de BD V4</span>
-                            </div>
-                            <small>Creado por: <Avatar /></small>
-                        </div>
-                    </div>
-                </div>
-
-
+                <ItemAsignaciones />
             </CustomTabPanel>
+            
             <CustomTabPanel value={value} index={1}>
                 Item Two
             </CustomTabPanel>
