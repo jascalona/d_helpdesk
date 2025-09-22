@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { Routes, Route, Link, Outlet } from 'react-router-dom';
+
+
 import SettingsIcon from '@mui/icons-material/Settings';
 
 import PersonIcon from '@mui/icons-material/Person';
 import GridViewIcon from '@mui/icons-material/GridView';
 import AppsOutageIcon from '@mui/icons-material/AppsOutage';
 import GroupsIcon from '@mui/icons-material/Groups';
-
 
 
 const BtnSetting = () => {
@@ -31,7 +33,7 @@ const BtnSetting = () => {
                     </div>
 
                     <div className="option-setting"><PersonIcon />
-                        <li className='alert-setting'><a href="#">Configuracion General</a><br />
+                        <li className='alert-setting'><Link to="ConfigGeneral">Configuracion General</Link><br />
                             <small>Ajusta tus preferencias personales</small>
                         </li>
                     </div>
