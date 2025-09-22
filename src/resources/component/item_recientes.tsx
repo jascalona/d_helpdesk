@@ -1,21 +1,17 @@
-import { useState } from "react"
-
-import InfoIcon from '@mui/icons-material/Info';
-import Avatar from '../avatar'
+import { useState } from "react";
+import Avatar from '../avatar';
+import PivotTableChartIcon from '@mui/icons-material/PivotTableChart';
 
 
 interface data {
     title: string,
-    date:string,
+    date: string,
     id: string,
     desc: string,
-    status: string,
-
-      
+    autor: string
 }
 
-function ItemAsignaciones({title, date, id,desc,status}: data) {
-
+function ItemActividadesRecientes({ title, date, id, desc, autor }: data) {
     return (
         <>
             <div className="table-tabs">
@@ -25,9 +21,8 @@ function ItemAsignaciones({title, date, id,desc,status}: data) {
 
                         <div className="text-task">
                             <div className="icon" style={{ marginRight: 10 }}>
-                                <InfoIcon />
+                                <PivotTableChartIcon />
                             </div>
-
 
                             <div className="text">
                                 <h3>{title} - <small>{date}</small></h3>
@@ -36,7 +31,8 @@ function ItemAsignaciones({title, date, id,desc,status}: data) {
                         </div>
 
                         <div className="description-create">
-                            <small style={{ marginRight: 10 }}>{status}</small>
+                            <small style={{ marginRight: 10 }}>Creado por:</small>
+                            <Avatar name={autor}/>
                         </div>
 
                     </div>
@@ -47,7 +43,5 @@ function ItemAsignaciones({title, date, id,desc,status}: data) {
 
         </>
     )
-
 }
-
-export default ItemAsignaciones
+export default ItemActividadesRecientes

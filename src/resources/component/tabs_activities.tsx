@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import ItemAsignaciones from './item_asignaciones';
+import ItemActividadesRecientes from './item_recientes';
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -50,11 +51,18 @@ function BasicTabs() {
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
-                <ItemAsignaciones />
+                <span style={{ fontWeight: 800, fontSize: '12px' }}>EN LA ULTIMA SEMANA</span>
+
+                <ItemActividadesRecientes title='Migracion BD' date='22/09/2025' id='123456' desc='Realizar Migracion de BD V4' autor='Jose Escalona' />
+                <ItemActividadesRecientes title='Desarrollo de Scripts' date='22/10/2025' id='654321' desc='Realizar el Desarrollo de Scripts' autor='Ricardo Martines' />
+                <ItemActividadesRecientes title='Migracion BD' date='22/09/2025' id='123456' desc='Realizar Migracion de BD V4' autor='Jose Escalona' />
+
             </CustomTabPanel>
-            
+
             <CustomTabPanel value={value} index={1}>
-                Item Two
+                <span style={{ fontWeight: 800, fontSize: '12px' }}>EN LA ULTIMA SEMANA</span>
+
+                <ItemAsignaciones title='Migracion BD' date='22/09/2025' id='123456' desc='Realizar Migracion de BD V4' status='Por hacer' />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
                 Item Three

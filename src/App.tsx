@@ -115,7 +115,7 @@ function App() {
               </span>
 
 
-              <span className="material-icons"><BackgroundLetterAvatars /></span>
+              <span className="material-icons"><BackgroundLetterAvatars name='Jose Escalona'/></span>
             </div>
           </header>
 
