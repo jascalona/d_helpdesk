@@ -1,0 +1,52 @@
+.tabs-props-i{
+    background: rebeccapurple;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.gallery-cards-i{
+    display: grid;
+    gap: 10px;
+}
+
+.gallery-cards-ii{
+    display: grid;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.card-props {
+    width: 220px;
+    border-radius: 10px;
+    border: 1px solid rgba(43, 42, 42, 0.177);
+    padding: 5px 10px;
+    justify-content: space-evenly;
+    padding: 10px 30px;
+    align-items: center;
+    text-align: center;
+    background: #ffffff2d;
+}
+
+.card-charts{
+    border: 1px solid rgba(43, 42, 42, 0.177);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.card-props .data-text{
+    text-align: center;
+    font-size: 14px;
+}
+
+
+@media (min-width: 1000px) {
+    .gallery-cards-i{
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .gallery-cards-ii{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+

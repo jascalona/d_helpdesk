@@ -87,7 +87,6 @@ function ConfigGeneral() {
 
                     {/* Cuerpo de la página */}
                     <section className="page-body">
-                        <h1>Configuracion General</h1>
                         {/*¡Aqui se renderizaran los componentes de tus sub-rutas!*/}
                         <Outlet />
                     </section>

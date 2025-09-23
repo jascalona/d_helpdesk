@@ -30,6 +30,7 @@ const userHeadCells = [
 function ViewOrganization() {
     return (
         <>
+
             <EnhancedTable data={users} headCells={userHeadCells} title="Usuarios" />
         </>
     )

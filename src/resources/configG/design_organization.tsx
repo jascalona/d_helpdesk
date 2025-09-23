@@ -13,6 +13,8 @@ function DesingOrgan() {
     ];
     return (
         <>
+            <h1>Configuracion General</h1>
+
             <div className="recent-projects">
 
                 <div className="container-empresa">

@@ -9,6 +9,9 @@ import ConfigGeneral from './resources/Config_general';
 import Themes from './resources/configG/Theme';
 import DesingOrgan from './resources/configG/design_organization';
 import ViewOrganization from './resources/component/view_organizacion';
+import DetallesOrganization from './resources/configG/detalles_organization';
+
+
 function App() {
 
   return (
@@ -22,10 +25,13 @@ function App() {
         <Route path="/ConfigGeneral/" element={<ConfigGeneral />}>
           <Route path="Themes" element={<Themes />} />
           <Route path="DesingOrgan" element={<DesingOrgan />} />
-          <Route path="ViewOrganization" element={<ViewOrganization />} />
-        </Route>
 
-      </Routes>
+          <Route path="ViewOrganization" element={<ViewOrganization />} />
+          <Route path='DetallesOrganization' element={<DetallesOrganization />} />
+
+      </Route>
+
+    </Routes >
 
 
 
