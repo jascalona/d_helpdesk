@@ -87,7 +87,7 @@ function Inicio() {
           {/* Barra superior */}
           <header className="topbar">
 
-            <div className="btn-open">
+            <div className="btn">
               <button onClick={handleOpenModal}><AddIcon sx={{ fontSize: 20 }} /> Crear</button>
             </div>
             <Modal isOpen={isModalOpen} onClose={handleCloseModal}>

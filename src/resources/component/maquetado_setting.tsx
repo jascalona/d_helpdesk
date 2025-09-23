@@ -74,7 +74,7 @@ function MaquetadoSetting() {
                 {/* Barra superior */}
                 <header className="topbar">
 
-                    <div className="btn-open">
+                    <div className="btn">
                     </div>
 
                     <div className="topbar-actions">

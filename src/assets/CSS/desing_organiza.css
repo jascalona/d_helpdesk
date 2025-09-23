@@ -3,6 +3,17 @@
     margin: 5px auto;
 }
 
+.gallery-card-setting{
+    display: grid;
+    gap: 10px;
+}
+
+@media (min-width: 1150px) {
+    .gallery-card-setting{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .card-empresa{
     margin-top: 30px;
     border: 1px solid rgba(43, 42, 42, 0.177);
@@ -11,10 +22,23 @@
 .header-card-empresa{
     padding: 12px;
     border-bottom: 1px solid rgba(43, 42, 42, 0.177);
+    display: flex;
+    align-items: center;
 }
 
 .body-empresa{
     padding: 15px;
     background-color: #fff;
+}
+
+
+.container-switch{
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 10px;
+}
+
+.text-empresa{
+    padding: 10px;
 }
 

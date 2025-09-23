@@ -5,9 +5,9 @@ const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 function BasicSwitches() {
   return (
-    <div>
+    <div className='container-switch'>
+      <span style={{fontSize: '13px'}}>Estado activo</span>
       <Switch {...label} disabled defaultChecked />
-      
     </div>
   );
 }
