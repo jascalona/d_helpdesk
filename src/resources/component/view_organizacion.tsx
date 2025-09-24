@@ -12,9 +12,8 @@ interface UserData {
 
 // 2. Prepara los datos (este sería el "fetch" de tu API)
 const users: UserData[] = [
-    { id: 1, rif: "J1234567", name: 'John Doe', estado: 'ACTIVO', autor: "Jose Escalona" },
-    { id: 2, rif: "J1234568", name: 'Jane Smith', estado: 'ACTIVO', autor: "Jose Escalona" },
-    { id: 3, rif: "J1234569", name: 'Peter Jones', estado: 'ACTIVO', autor: "Jose Escalona" },
+    { id: 1, rif: "Soluciones Sycom", name: 'John Doe', estado: 'ACTIVO', autor: "Jose Escalona" },
+    { id: 2, rif: "MicroFil", name: 'Jane Smith', estado: 'ACTIVO', autor: "Jose Escalona" },
 ];
 
 // 3. Define la configuración de las cabeceras
@@ -30,7 +29,12 @@ const userHeadCells = [
 function ViewOrganization() {
     return (
         <>
+            <div className="section-header">
+                <h2>Estructuras Actuales</h2>
+            </div>
+            <small>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam impedit similique voluptatibus recusandae corporis? Quidem aliquid facilis voluptates illum natus sed. Quo velit et nemo repellendus expedita aliquam esse maiores.</small>
 
+            <br /><br /><br />
             <EnhancedTable data={users} headCells={userHeadCells} title="Usuarios" />
         </>
     )
