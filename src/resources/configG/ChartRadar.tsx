@@ -1,4 +1,6 @@
 import React from 'react';
+import '../../assets/CSS/tabs.css';
+
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -29,8 +31,29 @@ export const data = {
   ],
 };
 
+// Define las opciones de configuración para el gráfico
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'right' as const, // Leyenda al lado derecho
+    },
+    title: {
+      display: true,
+      text: 'Chart.js PolarArea Chart',
+    },
+  },
+};
+
 function ChartRadar() {
-  return <PolarArea data={data} />;
+  return (
+    <>
+      <div className='chartArea'>
+        {/* Pasa el objeto 'options' al componente PolarArea */}
+        <PolarArea data={data} options={options} />
+      </div>
+    </>
+  )
 }
 
-export default ChartRadar
+export default ChartRadar;

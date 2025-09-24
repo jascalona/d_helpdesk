@@ -1,52 +1,136 @@
-.tabs-props-i{
-    background: rebeccapurple;
-    width: 100%;
+/* CONTEINER PADRE */
+.tabs-props-i {
+    max-width: 1500px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
 }
 
-.gallery-cards-i{
+/* CONTENEDORES DE LA GALERÍA */
+.gallery-cards-i,
+.gallery-cards-ii {
     display: grid;
-    gap: 10px;
+    gap: 15px;
+    width: 100%;
+    max-width: 1000px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    justify-content: center;
 }
 
-.gallery-cards-ii{
-    display: grid;
-    gap: 10px;
-    margin-top: 30px;
+.gallery-cards-ii {
+    margin-top: 20px;
+
 }
 
+/* ESTILOS DE LAS TARJETAS */
 .card-props {
     width: 220px;
     border-radius: 10px;
     border: 1px solid rgba(43, 42, 42, 0.177);
-    padding: 5px 10px;
-    justify-content: space-evenly;
     padding: 10px 30px;
     align-items: center;
     text-align: center;
     background: #ffffff2d;
 }
 
-.card-charts{
+.card-charts {
     border: 1px solid rgba(43, 42, 42, 0.177);
     padding: 20px;
     border-radius: 10px;
+    width: 100%;
+    margin: auto;
 }
 
-.card-props .data-text{
+.card-charts small {
+    margin: 20px auto;
+    font-size: 11px;
+}
+
+.card-props .data-text {
     text-align: center;
     font-size: 14px;
 }
 
+/* CONTENEDOR PARA GRÁFICOS */
+.chartArea {
+    width: 80%;
+}
 
-@media (min-width: 1000px) {
-    .gallery-cards-i{
-        grid-template-columns: repeat(4, 1fr);
-    }
+.chart{
+    height: 220px;
+    overflow: auto;
+    scrollbar-width: none;
+    scrollbar-color: #555 #f1f1f1;
+    scrollbar-width: thin;
+}
 
-    .gallery-cards-ii{
-        grid-template-columns: repeat(2, 1fr);
-    }
+/*ESTILOS PARA RESUMEN DE ACTIVIDADES*/
+.item-actividades p {
+    font-size: 13px;
+}
+
+.item-actividades {
+    margin: 8px auto;
 }
 
 
+
+.row-resumen {
+    height: 200px;
+    overflow: auto;
+    scrollbar-width: none;
+    scrollbar-color: #555 #f1f1f1;
+    scrollbar-width: thin;
+}
+
+.row-resumen::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+/* Estilo para la barra de desplazamiento completa */
+.row-resumen::-webkit-scrollbar {
+    width: 8px;
+    /* Ancho de la barra */
+    background-color: transparent;
+    /* Fondo transparente */
+}
+
+/* Estilo para el "pulgar" (la parte que se mueve) */
+.row-resumen::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Color del pulgar */
+    border-radius: 4px;
+    /* Bordes redondeados */
+    border: 2px solid transparent;
+    /* Crea un borde para separar el pulgar del track */
+}
+
+/* Cambia el color del pulgar al pasar el mouse por encima */
+.row-resumen::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* Estilo para el track (el fondo de la barra) */
+.row-resumen::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+
+.content-actividades {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    border-radius: 3px;
+}
+
+.content-actividades:hover {
+    background-color: #7776b352;
+}
+
+.text-content {
+    line-height: 1;
+}
