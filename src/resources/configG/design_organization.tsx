@@ -11,6 +11,14 @@ function DesingOrgan() {
         { value: "", label: "-- Seleccione una empresa --" },
         { value: "Soluciones Sycom", label: "Soluciones Sycom" },
     ];
+
+    const area = [
+        { value: "", label: "-- Seleccione un area --" },
+        { value: "Ingenieria", label: "Ingenieria" },
+        { value: "Gestion de Servicios", label: "Gestion de Servicios" },
+
+    ];
+
     return (
         <>
             <h1>Configuracion General</h1>
@@ -46,30 +54,60 @@ function DesingOrgan() {
                         </div>
                     </div>
 
-                    <div className="card-empresa">
-                        <div className="header-card-empresa">
-                            <h3>Crear Area</h3>
-                            <InfoIcon sx={{ marginLeft: 1 }} />
-                        </div>
-
-                        <div className="body-empresa">
-                            <div className="text-empresa">
-                                <label htmlFor="" style={{ fontSize: '12px', margin: '5px', lineHeight: 2.5 }}>Empresa</label>
-                                <Select options={empresa} />
-
-                                <div className="gallery-inputs">
-                                    <Inputs label='Nombre del area' placeholder='Por ejemplo, Gestion de Servicios' />
-                                    <Inputs label='Nombre de subarea' placeholder='Por ejemplo, QA' />
-                                </div>
-
-                                <BasicSwitches />
-                                <div className="btn">
-                                    <button>Crear</button>
-                                </div>
+                    <div className="gallery-area">
+                        <div className="card-empresa">
+                            <div className="header-card-empresa">
+                                <h3>Crear Area</h3>
+                                <InfoIcon sx={{ marginLeft: 1 }} />
                             </div>
 
+                            <div className="body-empresa">
+                                <div className="text-empresa">
+                                    <label htmlFor="" style={{ fontSize: '12px', margin: '5px', lineHeight: 2.5 }}>Empresa</label>
+                                    <Select options={empresa} />
+
+                                    <div className="gallery-inputs">
+                                        <Inputs label='Nombre del area' placeholder='Por ejemplo, Gestion de Servicios' />
+                                        <Inputs label='Nombre de subarea' placeholder='Por ejemplo, QA' />
+                                    </div>
+
+                                    <BasicSwitches />
+                                    <div className="btn">
+                                        <button>Crear</button>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
+
+                        <div className="card-empresa">
+                            <div className="header-card-empresa">
+                                <h3>Sub Area</h3>
+                                <InfoIcon sx={{ marginLeft: 1 }} />
+                            </div>
+
+                            <div className="body-empresa">
+                                <div className="text-empresa">
+                                    <label htmlFor="" style={{ fontSize: '12px', margin: '5px', lineHeight: 2.5 }}>Empresa</label>
+
+                                    <div className="gallery-inputs" style={{paddingBottom: 3}}>
+                                        <Select options={empresa} />
+                                        <Select options={area} />
+                                    </div>
+                                    <Inputs label='Nombre de subarea' placeholder='Por ejemplo, QA' />
+                                    
+
+                                    <BasicSwitches />
+                                    <div className="btn">
+                                        <button>Crear</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
+
 
                 </div>
             </div>
