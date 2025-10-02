@@ -9,7 +9,9 @@ import GroupIcon from '@mui/icons-material/Group';
 import GridViewIcon from '@mui/icons-material/GridView';
 import AppsOutageIcon from '@mui/icons-material/AppsOutage';
 
-import ChartRadar from '../component/ChartRadar';
+import ChartRadar from './ChartRadar';
+import ActividadesOrganizacion from '../component/table_resumen';
+
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -100,17 +102,30 @@ function TabsComponent() {
                     </div>
 
                     <div className="gallery-cards-ii">
-                        
+
                         <div className="card-charts">
-                            <h4>Resumen de Estado</h4>
-                            <ChartRadar />
+                            <div style={{ marginBottom: '20px' }}>
+                                <h4>Resumen de Estado</h4>
+                                <small>Obtén un resumen instantáneo del estado de tus actividades.</small>
+                            </div>
+                            <div className="chart">
+                                <ChartRadar />
+
+                            </div>
                         </div>
 
-                         <div className="card-charts">
-                            <h4>Resumen de Estado</h4>
-                            <ChartRadar />
+                        <div className="card-charts">
+                            <h4>Actividades Recientes</h4>
+                            <p style={{ marginBottom: 20, fontSize: '13px' }}>Mantente al día de lo que sucede en la organizacion.</p>
+                            <small>jueves, 19 de septiembre de 2025</small>
+                            <div className="row-resumen">
+                                <ActividadesOrganizacion emisor='Jose Escalona' actividad='Una Organizacion' estado='Creo' date='09/23/2025' />
+                                <ActividadesOrganizacion emisor='Richar Lopez' actividad='Un Componente' estado='Modifico' date='09/23/2025' />
+                                <ActividadesOrganizacion emisor='Alberto Suarez' actividad='Un Area' estado='Creo' date='09/23/2025' />
+                                <ActividadesOrganizacion emisor='Jose Escalona' actividad='Un componente' estado='Elimino' date='09/23/2025' />
+                            </div>
                         </div>
-                    
+
                     </div>
 
                 </div>

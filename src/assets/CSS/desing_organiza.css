@@ -8,6 +8,17 @@
     border: 1px solid rgba(43, 42, 42, 0.177);
 }
 
+.gallery-area{
+    display: grid;
+    gap: 15px;
+}
+
+@media (min-width: 1100px) {
+    .gallery-area{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .header-card-empresa{
     padding: 12px;
     border-bottom: 1px solid rgba(43, 42, 42, 0.177);
