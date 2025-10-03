@@ -9,6 +9,8 @@ import Inputs from '../inputs';
 import InfoIcon from '@mui/icons-material/Info';
 import BasicSwitches from '../Switch';
 
+import VerticalTabs from './TabsVertical';
+
 function ViewOrganization() {
 
     return (
@@ -19,6 +21,8 @@ function ViewOrganization() {
             </div>
             <small>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam impedit similique voluptatibus recusandae corporis? Quidem aliquid facilis voluptates illum natus sed. Quo velit et nemo repellendus expedita aliquam esse maiores.</small>
 
+
+            <VerticalTabs />
 
             <div className="card-empresa">
                 <div className="header-card-empresa">
@@ -40,9 +44,6 @@ function ViewOrganization() {
 
 
 
-            <div className="container-table-detalles">
-                <Table_i />
-            </div>
         </>
     )
 }
