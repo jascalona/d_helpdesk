@@ -68,7 +68,6 @@ function Table_I() {
                         header="Autor" 
                         body={autorBodyTemplate} // ✨ Usamos la función aquí
                     ></Column>
-
                 </DataTable>
             </div>
             {/* El Avatar que estaba fuera del DataTable lo he removido ya que va dentro de la columna */}

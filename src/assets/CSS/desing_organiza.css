@@ -1,58 +1,136 @@
-.container-empresa{
-    max-width: 90%;
-    margin: 5px auto;
+/*
+    ******************************
+    * Estilos Generales / Empresa *
+    ******************************
+    */
+.container-empresa {
+    width: 90%;
+    max-width: 1200px;
+    margin: 15px auto;
+    padding: 0 15px;
 }
 
-.card-empresa{
+.card-empresa {
     margin-top: 30px;
     border: 1px solid rgba(43, 42, 42, 0.177);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.gallery-area{
+.gallery-area {
     display: grid;
     gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
 }
 
-@media (min-width: 1100px) {
-    .gallery-area{
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.header-card-empresa{
+.header-card-empresa {
     padding: 12px;
     border-bottom: 1px solid rgba(43, 42, 42, 0.177);
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
-.body-empresa{
+.body-empresa {
     padding: 15px;
     background-color: #fff;
 }
 
-.gallery-inputs{
+.gallery-inputs {
     display: grid;
     gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-@media (min-width: 1000px) {
-    .gallery-inputs{
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-.container-switch{
+.container-switch {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 15px 10px;
     font-weight: 800;
-    font-size: 25px;
+    font-size: 20px;
 }
 
-.text-empresa{
+.text-empresa {
     padding: 10px;
 }
 
+/*
+    ********************
+    * Estilos de Setting *
+    ********************
+    */
+.container-cards-setting {
+    display: grid;
+    gap: 30px;
+    padding: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+@media (min-width: 1350px) {
+    .container-cards-setting{
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+@media (max-width: 1349px) {
+    .container-cards-setting{ 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .card-setting .title h3{
+        font-size: 17px;
+    }
+    .card-setting .title small{
+        font-size: 12px;
+    }
+    .descripton-setting p{
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 920px) {
+    .container-cards-setting{
+        grid-template-columns: 1fr;
+    }
+}
+
+.card-setting {
+    min-height: 220px;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.207);
+    margin: 0 auto;
+    max-width: 360px;
+    width: 100%;
+    background: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.card-header-setting {
+    display: flex;
+    align-items: center;
+}
+
+.card-setting .icon-card {
+    background: #7776B3;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    padding-top: 4px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.card-setting:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.286);
+}
+
+.descripton-setting {
+    margin: 30px auto;
+    font-size: 14px;
+}

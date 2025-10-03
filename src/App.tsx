@@ -8,7 +8,7 @@ import ConfigGeneral from './resources/Config_general';
 //Para Rutas Absolutas
 import Themes from './resources/configG/Theme';
 import DesingOrgan from './resources/configG/design_organization';
-import ViewOrganization from './resources/component/view_organizacion';
+import ViewOrganization from './resources/component/empresa/view_organizacion';
 import DetallesOrganization from './resources/configG/detalles_organization';
 
 
