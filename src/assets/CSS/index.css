@@ -48,16 +48,17 @@ button {
   display: flex;
   align-items: center;
   outline: none;
+  transition: all .2s;
+
 }
 
 button:hover {
-  border-color: #646cff;
+  transform: translateY(-1px);
+
 }
 
 /*CONTENIDOR PARA LOS INPUTS*/
-.content-input{
-  
-}
+.content-input {}
 
 @media (prefers-color-scheme: light) {
   :root {

@@ -27,27 +27,32 @@ function DesingOrgan() {
             <h1>Configuracion General</h1>
 
             <div className="recent-projects">
+                <div className="section-header">
+                </div>
+                <p>Diseño Organizacional</p>
+            </div>
+            <div className="recent-projects">
 
                 <div className="container-cards-setting">
 
 
                     <article className='card-setting'>
-                        <Link to="/ConfigGeneral/ViewOrganization" style={{ fontSize: '14px' }}>
-                        <div className="card-header-setting">
+                        <Link to="/ConfigGeneral/CreateEmpresa" style={{ fontSize: '14px' }}>
+                            <div className="card-header-setting">
 
-                            <div className="icon-card">
-                                <span><AddBusinessIcon sx={{ fontSize: 28 }} /></span>
+                                <div className="icon-card">
+                                    <span><AddBusinessIcon sx={{ fontSize: 28 }} /></span>
+                                </div>
+
+                                <div className="title">
+                                    <h3>Nueva Organizacion</h3>
+                                    <small>Crea una nueva organizacion</small>
+                                </div>
                             </div>
 
-                            <div className="title">
-                                <h3>Nueva Organizacion</h3>
-                                <small>Crea una nueva organizacion</small>
+                            <div className="descripton-setting">
+                                <p>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Repellat, eos?</p>
                             </div>
-                        </div>
-
-                        <div className="descripton-setting">
-                            <p>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Repellat, eos?</p>
-                        </div>
                         </Link>
                     </article>
 
@@ -98,7 +103,7 @@ function DesingOrgan() {
                             </div>
 
                             <div className="title">
-                                <h3>Nueva Organizacion</h3>
+                                <h3>Otros...</h3>
                                 <small>Crea una nueva organizacion</small>
                             </div>
                         </div>

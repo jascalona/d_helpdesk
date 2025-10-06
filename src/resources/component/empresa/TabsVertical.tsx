@@ -131,7 +131,7 @@ const StyledTab = styled(Tab)(({ theme, ownerState }) => ({
         fontSize: '1rem',
         fontWeight: 'bold',
         color: 'white',
-        backgroundColor: ownerState.active ? '#5A639C' : '#B0B0B0',
+        backgroundColor: ownerState.active ? '#7776B3' : '#B0B0B0',
         border: ownerState.active ? '2px solid #5A639C' : '2px solid #B0B0B0',
 
         // Ajuste de margen para horizontal
@@ -182,7 +182,7 @@ export function VerticalStepperTabs() {
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     const steps = [
-        { label: 'Datos', title: 'Datos de la Empresa' },
+        { label: 'Datos de la Empresa', title: 'Datos de la Empresa' },
         { label: 'Verificación', title: 'Verificación de Empresa' },
     ];
 
@@ -217,7 +217,7 @@ export function VerticalStepperTabs() {
                 <Box
                     sx={{
                         // Ancho fijo en vertical (sm y arriba)
-                        width: { xs: '100%', sm: 200 },
+                        width: { xs: '100%', sm: 250 },
                         // Borde derecho solo en vertical
                         borderRight: { xs: 'none', sm: '1px solid #E0E0E0' },
                         // Borde inferior solo en horizontal si es necesario (el StyledTabs ya lo tiene)
@@ -230,7 +230,7 @@ export function VerticalStepperTabs() {
                         sx={{
                             mb: { xs: 2, sm: 4 },
                             fontWeight: 'medium',
-                            textAlign: { xs: 'center' }
+                            textAlign: { xs: 'center' } 
                         }}
                     >
                         Crear Empresa{' '}
