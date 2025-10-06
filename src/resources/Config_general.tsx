@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Routes, Route, Link, Outlet } from 'react-router-dom';
+import React, { useState } from "react";
+// Importamos NavLink en lugar de Link
+import { Routes, Route, NavLink, Outlet } from 'react-router-dom';
 
 
 import Logo from '@mui/icons-material/WifiTethering';
@@ -18,6 +19,12 @@ import Themes from './configG/Theme';
 
 function ConfigGeneral() {
 
+    // Función para manejar las clases condicionales
+    const getNavLinkClass = ({ isActive }: { isActive: boolean }) => {
+        // La clase base 'nav-link-item' se aplica siempre
+        // La clase 'active-link' se aplica solo si isActive es true
+        return `nav-link-item ${isActive ? 'active-link' : ''}`;
+    };
 
     return (
         <>
@@ -30,25 +37,44 @@ function ConfigGeneral() {
                     </div>
                     <nav className="nav-menu">
                         <ul>
-                            <Link to="/" style={{color: '#42526e',fontWeight: 800, }}><li style={{fontSize: 20}} className="">
-                                <span className="material-icons"><ReplyAllIcon sx={{ fontSize: 20 }} /></span>
-                                Inicio
-                            </li></Link>
-
-
                             <span className="section-title">General</span>
 
-                            <Link to="Themes"><li className="active">
-                                <span className="material-icons"><ContrastIcon sx={{ fontSize: 20 }} /></span>
-                                Temas
-                            </li></Link>
+                            {/* NavLink para 'Inicio' */}
+                            <NavLink
+                                to="/"
+                                className={getNavLinkClass}
+                                // 'end' asegura que solo se active si la ruta es EXACTAMENTE "/"
+                                end
+                            >
+                                <li style={{ fontSize: 15 }}>
+                                    <span className="material-icons"><ReplyAllIcon sx={{ fontSize: 20 }} /></span>
+                                    Inicio
+                                </li>
+                            </NavLink>
 
-                            <Link to="DesingOrgan" style={{ color: '#42526e' }}>
+
+
+                            {/* NavLink para 'Temas' */}
+                            <NavLink
+                                to="Themes"
+                                className={getNavLinkClass}
+                            >
+                                <li>
+                                    <span className="material-icons"><ContrastIcon sx={{ fontSize: 20 }} /></span>
+                                    Temas
+                                </li>
+                            </NavLink>
+
+                            {/* NavLink para 'Diseño Organizacional' */}
+                            <NavLink
+                                to="DesingOrgan"
+                                className={getNavLinkClass}
+                            >
                                 <li>
                                     <span className="material-icons"><AccountTreeIcon sx={{ fontSize: 20 }} /></span>
                                     Diseño Organizacional
                                 </li>
-                            </Link>
+                            </NavLink>
 
                             <br />
                             <span className="section-title">OTROS</span>
@@ -87,7 +113,7 @@ function ConfigGeneral() {
 
                     {/* Cuerpo de la página */}
                     <section className="page-body">
-                        {/*¡Aqui se renderizaran los componentes de tus sub-rutas!*/}
+                        {/* ¡Aquí se renderizaran los componentes de tus sub-rutas! */}
                         <Outlet />
                     </section>
                 </main>
@@ -95,4 +121,4 @@ function ConfigGeneral() {
         </>
     )
 }
-export default ConfigGeneral
+export default ConfigGeneral;

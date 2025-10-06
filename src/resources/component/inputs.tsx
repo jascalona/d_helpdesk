@@ -1,25 +1,38 @@
 import React, { useState } from 'react';
 import '../../assets/CSS/componentes.css'; // Asumo que este archivo existe
 
-// Define un tipo para las props del componente, incluyendo un posible error
+// Define un tipo para las props del componente
 interface InputProps {
     label: string;
     placeholder: string;
+    // 💥 NUEVO: Valor del campo, controlado por el padre
+    value: string;
+    // 💥 NUEVO: Función para notificar al padre sobre el cambio de valor
+    onChange: (value: string) => void; 
+    
     // Opcionales para la validación:
     errorMessage?: string; // Mensaje de error a mostrar
     pattern?: string;      // Patrón regex para validación
     required?: boolean;    // Indica si el campo es obligatorio
 }
 
-function Inputs({ label, placeholder, errorMessage, pattern, required = false }: InputProps) {
-    // 1. Estado para el valor del input
-    const [value, setValue] = useState('');
-    // 2. Estado para saber si el usuario ya ha interactuado con el campo (lo ha desenfocado)
+function Inputs({ 
+    label, 
+    placeholder, 
+    value,       // Recibido como prop
+    onChange,    // Recibido como prop
+    errorMessage, 
+    pattern, 
+    required = false 
+}: InputProps) {
+    
+    // 1. Estado para saber si el usuario ya ha interactuado (lo ha desenfocado)
     const [touched, setTouched] = useState(false);
     
     // Función para manejar el cambio en el input
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value);
+        // Llama a la función del componente padre para actualizar el estado
+        onChange(e.target.value); 
     };
 
     // Función para manejar el evento onBlur (cuando el input pierde el foco)
@@ -27,18 +40,18 @@ function Inputs({ label, placeholder, errorMessage, pattern, required = false }:
         setTouched(true);
     };
 
-    // Lógica de validación
-    // Esto es muy básico y podrías externalizarlo, pero sirve para el ejemplo.
-    let validationError = errorMessage; // Por defecto, es el error que se pasa por props
+    // Lógica de Validación (Ajustada para usar la prop 'value')
     let isValid = true;
+    let validationError = errorMessage || 'El formato es inválido.'; // Mensaje de error por defecto
 
     if (required && value.trim() === '') {
         isValid = false;
         validationError = 'Este campo es obligatorio.';
     } else if (pattern && value.trim() !== '' && !new RegExp(pattern).test(value)) {
         isValid = false;
+        // Si falla el patrón, mantiene el 'errorMessage' de las props o el mensaje por defecto.
     } else {
-        validationError = ''; // Si pasa la validación, borra el mensaje de error
+        // Si pasa la validación, el campo es válido.
     }
 
     // El error solo se muestra si NO es válido Y el campo ya fue tocado/desenfocado.
@@ -48,22 +61,23 @@ function Inputs({ label, placeholder, errorMessage, pattern, required = false }:
         <div className="content-input">
             <label htmlFor={label} className="label">{label}</label>
             <input
-                id={label} // Es buena práctica para accesibilidad
+                id={label} 
                 type="text"
                 placeholder={placeholder}
-                value={value}
-                onChange={handleChange}
-                onBlur={handleBlur} // Marcamos como 'tocado' al desenfocar
+                
+                value={value} 
+                
+                onChange={handleChange} 
+                
+                onBlur={handleBlur} 
                 required={required}
-                // Aplicamos una clase condicional moderna
                 className={showError ? 'input-error' : 'input-valid'}
-                // Puedes agregar el patrón al input nativo, pero la validación CSS es limitada
-                // pattern={pattern} 
             />
-            {/* Mensaje de error moderno, solo se muestra si showError es true */}
+            
+            {/* Mensaje de error moderno */}
             {showError && (
                 <span className="error-message">
-                    {validationError || errorMessage || 'Formato inválido.'}
+                    {validationError}
                 </span>
             )}
         </div>

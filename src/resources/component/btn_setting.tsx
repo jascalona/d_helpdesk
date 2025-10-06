@@ -29,7 +29,7 @@ const BtnSetting = () => {
             {isOpen && (
                 <ul className="dropdown-menu show">
                     <div className="notification-header">
-                        <h3>Hola</h3>
+                        <h4>Herramientas</h4>
                     </div>
 
                     <div className="option-setting"><PersonIcon />

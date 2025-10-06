@@ -1,5 +1,6 @@
 .create-empresa {
-    width: 80%;
+    width: 85%;
+    min-height: 500px;
     margin: 50px auto;
     display: grid;
     align-items: center;
@@ -7,7 +8,7 @@
     padding: 30px;
     border-radius: 3px;
     box-shadow: 0px 2px 4px 3px rgba(0, 0, 0, 0.052);
-    background: #ffffff35;
+    background: #fff;
 }
 
 @media (min-width: 1100px) {
@@ -43,7 +44,6 @@
 }
 
 .formulario button{
-    background: #5A639C;
     font-size: 14px;
     padding: 7px 10px;
 }

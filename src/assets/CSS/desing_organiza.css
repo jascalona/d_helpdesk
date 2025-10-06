@@ -69,28 +69,31 @@
 }
 
 @media (min-width: 1350px) {
-    .container-cards-setting{
-        grid-template-columns: repeat(3, 1fr); 
+    .container-cards-setting {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 1349px) {
-    .container-cards-setting{ 
-        grid-template-columns: repeat(2, 1fr); 
+    .container-cards-setting {
+        grid-template-columns: repeat(2, 1fr);
     }
-    .card-setting .title h3{
+
+    .card-setting .title h3 {
         font-size: 17px;
     }
-    .card-setting .title small{
+
+    .card-setting .title small {
         font-size: 12px;
     }
-    .descripton-setting p{
+
+    .descripton-setting p {
         font-size: 13px;
     }
 }
 
 @media (max-width: 920px) {
-    .container-cards-setting{
+    .container-cards-setting {
         grid-template-columns: 1fr;
     }
 }
@@ -103,7 +106,7 @@
     margin: 0 auto;
     max-width: 360px;
     width: 100%;
-    background: #ffffff;
+    background: #fff;
     transition: transform 0.3s ease;
 }
 
@@ -113,7 +116,7 @@
 }
 
 .card-setting .icon-card {
-    background: #7776B3;
+    background: #23303D;
     width: 60px;
     height: 60px;
     display: flex;
@@ -136,15 +139,14 @@
 }
 
 /*CONTAINER DATOS VERIFICATIO*/
-.container-verification .content{
+.container-verification .content {
     display: grid;
     flex-wrap: wrap;
     gap: 10px;
 }
 
 @media (min-width: 1000px) {
-    .container-verification .content{
+    .container-verification .content {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
