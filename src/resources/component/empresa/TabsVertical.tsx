@@ -3,18 +3,18 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper'; // Para el fondo redondeado
-import Container from '@mui/material/Container'; // Para centrar el contenido (opcional)
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward'; // Para el botón de flecha
-import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Container from '@mui/material/Container';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { styled, useTheme } from '@mui/material/styles'; // Importar useTheme
+import useMediaQuery from '@mui/material/useMediaQuery'; // Importar useMediaQuery
 import {
     TextField,
-    InputLabel,
-    FormControl,
-    Select,
-    MenuItem,
     Button,
-} from '@mui/material'; // Para los campos del formulario
+} from '@mui/material'; // Importar componentes necesarios
+
+// Asume que este componente existe. Lo incluimos para que compile.
+const InputDesable = () => <TextField fullWidth margin="normal" label="Campo Deshabilitado" disabled />;
 
 // --- Componentes Reutilizables ---
 
@@ -22,11 +22,17 @@ interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
     value: number;
-    title: string; // Para el título de la sección de datos
+    title: string;
+    onNext: () => void; // Asegurar que onNext esté en las props para el botón
 }
 
 function TabPanel(props: TabPanelProps) {
-    const { children, value, index, title, ...other } = props;
+    const { children, value, index, title, onNext, ...other } = props;
+
+    // Estilo adaptado para el botón de siguiente
+    const handleNextClick = () => {
+        if (index < 3) onNext();
+    };
 
     return (
         <div
@@ -34,42 +40,39 @@ function TabPanel(props: TabPanelProps) {
             hidden={value !== index}
             id={`vertical-tabpanel-${index}`}
             aria-labelledby={`vertical-tab-${index}`}
-            style={{ flexGrow: 1 }} // Asegura que el panel use el espacio restante
+            // Importante: flexGrow: 1 en el div principal del TabPanel
+            style={{ flexGrow: 1 }}
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 4 }}>
+                <Box sx={{ p: { xs: 2, sm: 4 } }}> {/* Padding responsivo */}
                     {/* Título de la sección de datos */}
                     <Typography variant="h5" sx={{ mb: 4, fontWeight: 'bold' }}>
                         {title}
                     </Typography>
                     {/* Contenido del formulario */}
                     <Paper
-                        elevation={2} // Sombra suave como en la imagen
+                        elevation={2}
                         sx={{
-                            p: 4,
-                            borderRadius: 2, // Bordes redondeados
-                            maxWidth: 500, // Ajuste de ancho para el formulario
+                            p: { xs: 2, sm: 4 }, // Padding responsivo para el Paper
+                            borderRadius: 2,
+                            // Eliminar el maxWidth fijo para que ocupe todo el espacio disponible
+                            // maxWidth: 500, // <--- ELIMINADO PARA RESPONSIVIDAD COMPLETA
                         }}
                     >
                         <Box>{children}</Box>
                         {/* Botón de flecha para siguiente paso */}
-                        {index < 3 && ( // Muestra el botón excepto en el paso "Finalizar"
+                        {index < 3 && (
                             <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 3 }}>
                                 <Button
                                     variant="contained"
-                                    onClick={() => {
-                                        // Lógica para avanzar de pestaña
-                                        // Esto simula el avance, la lógica de validación iría aquí.
-                                        // En este ejemplo, simplemente avanza al siguiente paso.
-                                        if (index < 3) props.onNext();
-                                    }}
+                                    onClick={handleNextClick}
                                     sx={{
-                                        borderRadius: '50%', // Botón circular
+                                        borderRadius: '50%',
                                         width: 56,
                                         height: 56,
                                         minWidth: 0,
-                                        backgroundColor: '#5A639C', // Color primario
+                                        backgroundColor: '#5A639C',
                                         '&:hover': {
                                             backgroundColor: '#5A639C',
                                         },
@@ -86,27 +89,35 @@ function TabPanel(props: TabPanelProps) {
     );
 }
 
-function a11yProps(index: number) {
+function a11yProps(index: number, isVertical: boolean) {
+    const orientation = isVertical ? 'vertical' : 'horizontal';
     return {
-        id: `vertical-tab-${index}`,
-        'aria-controls': `vertical-tabpanel-${index}`,
+        id: `${orientation}-tab-${index}`,
+        'aria-controls': `${orientation}-tabpanel-${index}`,
     };
 }
 
 // --- Estilo Personalizado para el Indicador de Paso (Círculo y Línea) ---
 
 const StyledTab = styled(Tab)(({ theme, ownerState }) => ({
-    // Ocultar el indicador estándar del tab
     '&.Mui-selected': {
-        color: '#5A639C', // Color del texto activo
+        color: '#5A639C',
         backgroundColor: 'transparent',
     },
     '&.MuiTab-root': {
-        minHeight: 80, // Espacio entre elementos
+        minHeight: 80,
         padding: '6px 0',
-        alignItems: 'flex-start', // Alinear texto al inicio
-        textTransform: 'none', 
+        alignItems: 'flex-start',
+        textTransform: 'none',
         fontSize: '1rem',
+        // Estilo adaptado para la orientación horizontal en pantallas pequeñas
+        ...(ownerState.isMobile && {
+            minHeight: 48, // Menos altura en móvil
+            padding: '6px 12px',
+            alignItems: 'center',
+            flexDirection: 'row', // Icono y texto en línea en horizontal
+            justifyContent: 'center',
+        }),
     },
     // Estilo del círculo del paso (simulado con el icono)
     '& .MuiTab-iconWrapper': {
@@ -119,28 +130,46 @@ const StyledTab = styled(Tab)(({ theme, ownerState }) => ({
         marginRight: theme.spacing(2),
         fontSize: '1rem',
         fontWeight: 'bold',
-        color: ownerState.active ? 'white' : 'white', // Número en blanco
-        backgroundColor: ownerState.active ? '#7776B3' : '#B0B0B0', //activo, gris para inactivo
-        border: ownerState.active ? '2px solid #5A639C' : '2px solid #B0B0B0', // Borde
+        color: 'white',
+        backgroundColor: ownerState.active ? '#5A639C' : '#B0B0B0',
+        border: ownerState.active ? '2px solid #5A639C' : '2px solid #B0B0B0',
+
+        // Ajuste de margen para horizontal
+        ...(ownerState.isMobile && {
+            marginRight: theme.spacing(1),
+        }),
     },
-    // Ocultar el texto del icono (que es el número del paso)
     '& .MuiTab-iconWrapper > svg': {
         display: 'none',
     },
-    // Estilo para el número de paso dentro del círculo
     '& .MuiTab-iconWrapper::after': {
-        content: `"${ownerState.stepNumber}"`, // Mostrar el número
+        content: `"${ownerState.stepNumber}"`,
     },
 }));
 
-// --- Estilo de la Línea Vertical de Conexión ---
+// --- Estilo de la Línea Vertical/Horizontal de Conexión ---
 
-const StyledTabs = styled(Tabs)(({ theme }) => ({
-    // Línea vertical que simula la conexión del stepper
+const StyledTabs = styled(Tabs)(({ theme, ownerState }) => ({
     '& .MuiTabs-indicator': {
-        backgroundColor: 'transparent',},
+        // En vertical, la línea se simula con el borde de la columna (en el Box padre)
+        backgroundColor: 'transparent',
+        // En horizontal, queremos la línea estándar de MUI (o personalizarla)
+        ...(ownerState.isMobile && {
+            backgroundColor: '#5A639C', // Indicador horizontal visible
+        }),
+    },
     borderRight: 'none',
-    paddingLeft: theme.spacing(4), // Espacio a la izquierda
+    paddingLeft: theme.spacing(4),
+
+    // Estilo responsivo
+    ...(ownerState.isMobile && {
+        borderRight: 'none',
+        borderBottom: `1px solid ${theme.palette.divider}`, // Separador inferior en móvil
+        paddingLeft: theme.spacing(0), // Sin padding extra en móvil
+        '& .MuiTabs-flexContainer': {
+            justifyContent: 'space-around', // Distribuir los tabs en horizontal
+        }
+    }),
 }));
 
 
@@ -148,10 +177,13 @@ const StyledTabs = styled(Tabs)(({ theme }) => ({
 
 export function VerticalStepperTabs() {
     const [value, setValue] = React.useState(0);
+    const theme = useTheme();
+    // Determinar si la pantalla es menor que el breakpoint 'sm'
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     const steps = [
-        { label: 'Datos de la empresa', title: 'Datos de la empresa' },
-        { label: 'Verificacion de empresa', title: 'Verificacion de empresa' },
+        { label: 'Datos', title: 'Datos de la Empresa' },
+        { label: 'Verificación', title: 'Verificación de Empresa' },
     ];
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -159,34 +191,65 @@ export function VerticalStepperTabs() {
     };
 
     const handleNext = () => {
-        setValue((prev) => prev + 1);
+        // En un caso real, aquí iría la validación del formulario antes de avanzar.
+        setValue((prev) => Math.min(prev + 1, steps.length - 1));
     };
+
+    // Determina la orientación de los tabs
+    const orientation = isMobile ? 'horizontal' : 'vertical';
 
     return (
         <Container maxWidth="lg" sx={{ mt: 5, mb: 5 }}>
-            {/* Contenedor principal para el diseño de la imagen */}
-            <Paper elevation={0} sx={{ p: 4, borderRadius: 3, display: 'flex' }}>
-
-                {/* Columna izquierda: Indicadores de Paso (Tabs) */}
-                <Box sx={{ width: 250, borderRight: '1px solid #E0E0E0' }}>
-                    <Typography variant="h5" sx={{ mb: 4, fontWeight: 'medium' }}>
+            {/* El Paper principal no cambia mucho, pero el `display: 'flex'` debe ser condicional */}
+            <Paper
+                elevation={0}
+                sx={{
+                    p: { xs: 2, sm: 4 }, // Padding responsivo
+                    borderRadius: 3,
+                    // Flexbox solo en pantallas grandes (vertical)
+                    display: { xs: 'block', sm: 'flex' },
+                }}
+            >
+                {/* =================================
+                COLUMNA DE INDICADORES DE PASO (TABS)
+                =================================
+                */}
+                <Box
+                    sx={{
+                        // Ancho fijo en vertical (sm y arriba)
+                        width: { xs: '100%', sm: 200 },
+                        // Borde derecho solo en vertical
+                        borderRight: { xs: 'none', sm: '1px solid #E0E0E0' },
+                        // Borde inferior solo en horizontal si es necesario (el StyledTabs ya lo tiene)
+                        mb: { xs: 2, sm: 0 }, // Margen inferior en móvil
+                        mr: { xs: 0, sm: 4 }, // Margen derecho en escritorio (separación de contenido)
+                    }}
+                >
+                    <Typography
+                        variant="h6"
+                        sx={{
+                            mb: { xs: 2, sm: 4 },
+                            fontWeight: 'medium',
+                            textAlign: { xs: 'center' }
+                        }}
+                    >
                         Crear Empresa{' '}
                         <Box component="span" sx={{ color: '#909090', fontWeight: 'regular', fontSize: '1rem' }}>
-                            {value + 1}/2
+                            {value + 1}/{steps.length}
                         </Box>
                     </Typography>
 
                     <StyledTabs
-                        orientation="vertical"
-                        variant="scrollable"
+                        orientation={orientation}
+                        variant={isMobile ? 'fullWidth' : 'scrollable'} // fullWidth en móvil
                         value={value}
                         onChange={handleChange}
                         aria-label="Proceso de solicitud de cobro"
                         TabIndicatorProps={{
-                            style: {
-                                backgroundColor: 'transparent',
-                            },
+                            // En vertical, el indicador es transparente. En horizontal, se usa el por defecto.
+                            style: { backgroundColor: isMobile ? '#5A639C' : '#5A639C' },
                         }}
+                        ownerState={{ isMobile }} // Pasar la prop para estilizar en móvil
                     >
                         {steps.map((step, index) => (
                             <StyledTab
@@ -195,9 +258,9 @@ export function VerticalStepperTabs() {
                                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                                         <Typography
                                             sx={{
-                                                fontSize: '0.9rem',
+                                                fontSize: '14px',
                                                 fontWeight: index === value ? 'bold' : 'normal',
-                                                color: index === value ? '#1976D2' : '#000',
+                                                color: index === value ? '#5A639C' : '#000',
                                             }}
                                         >
                                             {step.label}
@@ -206,80 +269,47 @@ export function VerticalStepperTabs() {
                                 }
                                 icon={
                                     <Box
-                                        sx={{
-                                            width: 24,
-                                            height: 24,
-                                            borderRadius: '50%',
-                                            backgroundColor: index === value ? '#1976D2' : '#B0B0B0',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            color: 'white',
-                                            fontSize: '0.9rem',
-                                            fontWeight: 'bold',
-                                            mr: 2,
-                                        }}
-                                    >
-                                        {/* Icono si está activo, número si no lo está - aquí solo usamos el color/texto */}
-                                    </Box>
+                                    // Estilo de icono movido al StyledTab para consistencia
+                                    />
                                 }
                                 iconPosition="start"
-                                // Pasar props personalizadas para el estilo
-                                ownerState={{ active: index === value, stepNumber: index + 1 }}
-                                {...a11yProps(index)}
+                                ownerState={{
+                                    active: index === value,
+                                    stepNumber: index + 1,
+                                    isMobile // Pasar la prop para el estilo responsivo
+                                }}
+                                {...a11yProps(index, !isMobile)} // Usar el helper a11yProps adaptado
                             />
                         ))}
                     </StyledTabs>
                 </Box>
 
-                {/* Columna central y derecha: Contenido del Formulario y Detalle */}
-                <Box sx={{ display: 'flex', flexGrow: 1 }}>
+                {/* =================================
+                CONTENIDO DEL FORMULARIO
+                =================================
+                */}
+                <Box sx={{ flex: 1 }}>
+                    <TabPanel value={value} index={0} title={steps[0].title} onNext={handleNext}>
+                        {/* Contenido del Paso 1: Datos de la empresa */}
+                        {/* Los TextFields ya son fullWidth, lo que ayuda a la responsividad */}
+                        <TextField fullWidth margin="normal" label="RIF" type="text" variant="outlined" />
+                        <TextField fullWidth margin="normal" label="Nombre" type="text" variant="outlined" />
+                        <TextField fullWidth margin="normal" label="Estado" type="text" defaultValue={"Activo"} variant="outlined" />
+                        <TextField fullWidth margin="normal" label="Autor" type="text" variant="outlined" />
+                    </TabPanel>
 
-                    {/* Columna central: Formulario de datos */}
-                    <Box sx={{ flex: 1 }}>
-                        <TabPanel value={value} index={0} title={steps[0].title} onNext={handleNext}>
-                            {/* Contenido del Paso 1: Datos del cobrador */}
-
-                            <TextField
-                                fullWidth
-                                margin="normal"
-                                label="RIF"
-                                type="text"
-                                variant="outlined"
-                            />
-
-                            <TextField
-                                fullWidth
-                                margin="normal"
-                                label="Nombre"
-                                type="text"
-                                variant="outlined"
-                            />
-
-                            <TextField
-                                fullWidth
-                                margin="normal"
-                                label="Estado"
-                                type="text"
-                                defaultValue={"Activo"}
-                                variant="outlined"
-                            />
-
-                            <TextField
-                                fullWidth
-                                margin="normal"
-                                label="Autor"
-                                type="text"
-                                variant="outlined"
-                            />
-
-
-                        </TabPanel>
-
-
-
-
-                    </Box>
+                    <TabPanel value={value} index={1} title={steps[1].title} onNext={handleNext}>
+                        {/* Contenido del Paso 2: Verificación */}
+                        <Box className="container-verification">
+                            {/* Ajusta la clase .content si no tienes estilos externos que lo hagan responsivo */}
+                            <Box className="content">
+                                <InputDesable />
+                                <InputDesable />
+                                <InputDesable />
+                                <InputDesable />
+                            </Box>
+                        </Box>
+                    </TabPanel>
                 </Box>
             </Paper>
         </Container>

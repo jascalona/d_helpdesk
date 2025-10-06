@@ -134,3 +134,16 @@
     margin: 30px auto;
     font-size: 14px;
 }
+
+/*CONTAINER DATOS VERIFICATIO*/
+.container-verification .content{
+    display: grid;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+@media (min-width: 1000px) {
+    .container-verification .content{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

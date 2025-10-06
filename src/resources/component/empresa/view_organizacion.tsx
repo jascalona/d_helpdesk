@@ -24,26 +24,6 @@ function ViewOrganization() {
 
             <VerticalTabs />
 
-            <div className="card-empresa">
-                <div className="header-card-empresa">
-                    <h3>Crear Organizacion</h3>
-                    <InfoIcon sx={{ marginLeft: 1 }} />
-                </div>
-
-                <div className="body-empresa">
-                    <div className="text-empresa">
-                        <Inputs label='Numero de RIF' placeholder='Por ejemplo, J1234567890' />
-                        <Inputs label='Nombre de la Organizacion' placeholder='Por ejemplo, Soluciones Sycom' />
-                        <BasicSwitches />
-                        <div className="btn">
-                            <button>Crear</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
         </>
     )
 }
