@@ -1,27 +1,3 @@
-/*Estilos para el componente INPUT*/
-.content-input {
-    width: 100%;
-    margin: 3px auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.content-input .label{
-    font-size: 11px;
-    margin: 5px;
-    margin-top: 10px;
-}
-
-.content-input input {
-    background: #f4f5f7;
-    color: #42526e;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid rgba(43, 42, 42, 0.177);
-    outline: none;
-}
-
-
 /*Componente Select Option*/
 .custom-select-container {
     display: flex;
@@ -34,6 +10,62 @@
     border: 1px solid rgba(43, 42, 42, 0.177);
 
 }
+
+/* --- Estilos Base para el Input --- */
+.content-input {
+    margin-bottom: 10px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+    font-size: 12px;
+}
+
+.content-input input {
+    width: 100%;
+    margin: 3px auto;
+    color: #42526e;
+    background: #f4f5f7;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(43, 42, 42, 0.177);
+    outline: none;
+}
+
+/* --- Estilos Modernos de Foco --- */
+.content-input input:focus {
+    outline: none;
+    border-color: #5A639C;
+    box-shadow: 0 0 0 1px rgba(0, 123, 255, 0.25);
+}
+
+/* --- Estilos de Validación: Error (El más importante) --- */
+.content-input .input-error {
+    border-color: #dc3545;
+    /* Color rojo para el error */
+    box-shadow: 0 0 0 1px rgba(220, 53, 69, 0.25);
+}
+
+/* --- Estilo para el Mensaje de Error --- */
+.error-message {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #dc3545;
+    /* Rojo para el error */
+    font-weight: 400;
+    /* Estilo moderno: un poco de espacio y transición */
+    opacity: 1;
+    max-height: 50px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
 
 /* Etiqueta del select */
 .select-label {

@@ -23,13 +23,33 @@ function CreateEmpresa() {
 
                     <small>Lorem ipsum dolor sit amet, consectetur </small>
 
-                    <Inputs label="RIF" placeholder="Por ejmplo, J1234567890" />
-                    <Inputs label="Nombre" placeholder="Por ejmplo, Soluciones Sycom C.A" />
-                    <Inputs label="Autor" placeholder="Por ejmplo, Jose Escalona" />
+                    <form>
+                        <Inputs
+                            label="RIF"
+                            placeholder="Por ejemplo, J123456789"
+                            required={true} // Obligatorio
+                            errorMessage="El rif debe tener al menos 7 caracteres y no contener símbolos."
+                            pattern="^[A-Za-z0-9]{7}$"
+                        />
+                        <Inputs
+                            label="Nombre de Empresa"
+                            placeholder="Por ejemplo, Soluciones Sycom C.A"
+                            required={true} // Obligatorio
+                            errorMessage="El nombre debe tener al menos 3 caracteres y no contener símbolos."
+                            pattern="^[A-Za-z0-9]{3,}$"
+                        />
 
-                    <div className="btn" style={{ marginTop: 10 }}>
-                        <button>Crear</button>
-                    </div>
+                        <Inputs
+                            label="Autor"
+                            placeholder="Por ejemplo, Jose Escalona"
+                            required={true} // Obligatorio
+                            errorMessage="El nombre debe tener al menos 3 caracteres y no contener símbolos."
+                            pattern="^[A-Za-z]{4}$"
+                        />
+
+
+                        <button type="submit">Crear</button>
+                    </form>
 
                 </div>
 
@@ -65,7 +85,7 @@ function CreateEmpresa() {
                     </Link>
 
 
-                    <div className="section-header" style={{float: 'right', margin: '10px 30px'}}>
+                    <div className="section-header" style={{ float: 'right', margin: '10px 30px' }}>
                         <Link to={"/ConfigGeneral/EmpresaInt"} style={{ fontSize: '14px' }}>Ver Organizaciones</Link>
                     </div>
 

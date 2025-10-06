@@ -42,6 +42,12 @@
     color: grey;
 }
 
+.formulario button{
+    background: #5A639C;
+    font-size: 14px;
+    padding: 7px 10px;
+}
+
 .options-plantillas .plantilla {
     display: flex;
     justify-content: space-between;

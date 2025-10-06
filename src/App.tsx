@@ -9,7 +9,6 @@ import ConfigGeneral from './resources/Config_general';
 import Themes from './resources/configG/Theme';
 import DesingOrgan from './resources/configG/design_organization';
 import CreateEmpresa from './resources/component/empresa/create_organizacion';
-import DetallesOrganization from './resources/configG/detalles_organization';
 import EmpresaInt from './resources/component/empresa/empresaInt';
 
 function App() {
@@ -28,7 +27,6 @@ function App() {
           <Route path="DesingOrgan/" element={<DesingOrgan />} />
 
           <Route path="CreateEmpresa" element={<CreateEmpresa />} />
-          <Route path='DetallesOrganization' element={<DetallesOrganization />} />
 
           <Route path='EmpresaInt' element={<EmpresaInt />}/>
 
