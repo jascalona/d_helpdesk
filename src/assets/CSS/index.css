@@ -58,8 +58,6 @@ button:hover {
 }
 
 /*CONTENIDOR PARA LOS INPUTS*/
-.content-input {}
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

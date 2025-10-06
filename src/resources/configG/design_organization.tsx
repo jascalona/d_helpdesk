@@ -37,7 +37,7 @@ function DesingOrgan() {
 
 
                     <article className='card-setting'>
-                        <Link to="/ConfigGeneral/CreateEmpresa" style={{ fontSize: '14px' }}>
+                        <Link to="/ConfigGeneral/CreateEmpresa" style={{ fontSize: '14px', color: '#42526e' }}>
                             <div className="card-header-setting">
 
                                 <div className="icon-card">
@@ -51,7 +51,7 @@ function DesingOrgan() {
                             </div>
 
                             <div className="descripton-setting">
-                                <p>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Repellat, eos?</p>
+                                <p style={{fontWeight: 300}}>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Repellat, eos?</p>
                             </div>
                         </Link>
                     </article>

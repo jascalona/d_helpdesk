@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { InputText } from 'primereact/inputtext'; // Importado
-import { FilterMatchMode } from 'primereact/api'; // Importado
+import { InputText } from 'primereact/inputtext';
+import { FilterMatchMode } from 'primereact/api';
+import { Button } from 'primereact/button'; //
+import * as XLSX from 'xlsx'; // 
 import axios from 'axios';
-import Avatar from '../../avatar'; 
+import Avatar from '../../avatar';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 interface Empresa {
     co_emp: string;
     nb_emp: string;
     st_estado: string;
     fe_registro: string;
-    autor: string; 
+    autor: string;
 }
 
 // Definición inicial de filtros para el DataTable
@@ -22,12 +25,11 @@ const initialFilters = {
 
 // Función para renderizar el Avatar y el nombre en la celda
 const autorBodyTemplate = (rowData: Empresa) => {
-    const autorNombre = rowData.autor; 
+    const autorNombre = rowData.autor;
 
     return (
-        <div className="flex align-items-center gap-2"> 
-            <Avatar name={autorNombre} /> 
-            <span>{autorNombre}</span> 
+        <div className="flex align-items-center gap-2">
+            <Avatar name={autorNombre} />
         </div>
     );
 };
@@ -52,31 +54,44 @@ function Table_I() {
             });
     }, []);
 
-    // 🌟 FUNCION CORREGIDA
+    // FUNCION PARA EXPORTAR A EXCEL
+    const exportExcel = () => {
+        // Mapear los datos a un formato más legible si es necesario,
+        // o simplemente usa el arreglo de empresas.
+        const dataForExport = empresas.map(emp => ({
+            "RIF": emp.co_emp,
+            "Nombre Organizacion": emp.nb_emp,
+            "Estado": emp.st_estado,
+            "Fecha Registro": emp.fe_registro,
+            "Autor": emp.autor,
+        }));
+        
+        const worksheet = XLSX.utils.json_to_sheet(dataForExport);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Empresas");
+        
+        XLSX.writeFile(workbook, "empresas_data.xlsx");
+    };
+
+    // FUNCION CORREGIDA
     const onGlobalFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        
-        // 1. Crea una copia inmutable del objeto de filtros
-        let _filters = { ...filters }; 
 
-        // 2. Asigna el nuevo valor a la COPIA (_filters)
-        // El valor de 'value' es de tipo 'string', lo cual es válido aquí.
-        _filters['global'].value = value; 
+        let _filters = { ...filters };
 
-        // 3. Actualiza el estado de los filtros para que DataTable reaccione
+        _filters['global'].value = value;
+
         setFilters(_filters);
-        
-        // 4. Actualiza el valor del input para que esté controlado
+
         setGlobalFilterValue(value);
     };
-    // 🌟
 
     // Campos en los que se aplicará la búsqueda global
     const globalFilterFields = [
-        'co_emp', 
-        'nb_emp', 
-        'st_estado', 
-        'fe_registro', 
+        'co_emp',
+        'nb_emp',
+        'st_estado',
+        'fe_registro',
         'autor'
     ];
 
@@ -85,25 +100,39 @@ function Table_I() {
     return (
         <>
             {/* Input de Búsqueda Global (Fuera del DataTable) */}
-            <div className="p-input-icon-left" style={{ marginBottom: '1rem' }} >
+            <div className="p-input-icon-left" >
                 <i className="pi pi-search" />
-                <InputText 
-                    value={globalFilterValue} 
-                    onChange={onGlobalFilterChange} 
-                    placeholder="Buscar..." 
+                <InputText style={{ background: '#fffffff6', border: 'solid 1px #7776b352', padding: 8, borderRadius: 3, color: '#333', width: '300px', outline: 'none' }}
+                    value={globalFilterValue}
+                    onChange={onGlobalFilterChange}
+                    placeholder="Buscar..."
                 />
             </div>
-            {/* --- */}
-            
+
             <div className="table-empresa">
+                <div className="options">
+                    <h3>Organizaciones</h3>
+
+                    <div className="group-btn">
+                        {/*  BOTON DE DESCARGA AGREGADO AQUÍ */}
+                        <Button style={{color: '#5A639C', fontSize: '20px', padding: '7px'}}
+                            type="button" 
+                            icon="pi pi-file-excel"  
+                            className="p-button-success" 
+                            onClick={exportExcel} 
+                            disabled={empresas.length === 0} // Desactivar si no hay datos
+                        ><FileDownloadIcon sx={{fontSize: 15}}/></Button>
+                    </div>
+                </div>
+
                 <DataTable
                     value={empresas}
                     tableStyle={{ minWidth: '50rem' }}
-                    paginator 
-                    rows={10} 
-                    emptyMessage="No hay empresas registradas"
+                    paginator
+                    rows={10}
+                    emptyMessage="No se encontraron registros relacionados"
                     className="tabla-empresa"
-                    paginatorClassName="mi-paginador-personalizado" 
+                    paginatorClassName="mi-paginador-personalizado"
                     // Propiedades para el filtro global
                     filters={filters} // Se pasa el objeto de filtros actualizado
                     globalFilterFields={globalFilterFields} // Se indican las columnas a filtrar
@@ -112,10 +141,10 @@ function Table_I() {
                     <Column field="nb_emp" header="Nm Organizacion"></Column>
                     <Column field="st_estado" header="Estado"></Column>
                     <Column field="fe_registro" header="Fe Registro"></Column>
-                    <Column 
-                        field="autor" 
-                        header="Autor" 
-                        body={autorBodyTemplate} 
+                    <Column
+                        field="autor"
+                        header="Autor"
+                        body={autorBodyTemplate}
                     ></Column>
                 </DataTable>
             </div>
