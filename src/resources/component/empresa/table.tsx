@@ -102,7 +102,7 @@ function Table_I() {
             {/* Input de Búsqueda Global (Fuera del DataTable) */}
             <div className="p-input-icon-left" >
                 <i className="pi pi-search" />
-                <InputText style={{ background: '#fffffff6', border: 'solid 1px #7776b352', padding: 8, borderRadius: 3, color: '#333', width: '300px', outline: 'none' }}
+                <InputText style={{ background: '#fffffff6', border: 'solid 1px #7776b352', padding: 10, borderRadius: 5, color: '#333', width: '300px', outline: 'none' }}
                     value={globalFilterValue}
                     onChange={onGlobalFilterChange}
                     placeholder="Buscar..."

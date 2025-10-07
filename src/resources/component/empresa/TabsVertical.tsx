@@ -216,13 +216,10 @@ export function VerticalStepperTabs() {
                 */}
                 <Box
                     sx={{
-                        // Ancho fijo en vertical (sm y arriba)
                         width: { xs: '100%', sm: 250 },
-                        // Borde derecho solo en vertical
                         borderRight: { xs: 'none', sm: '1px solid #E0E0E0' },
-                        // Borde inferior solo en horizontal si es necesario (el StyledTabs ya lo tiene)
-                        mb: { xs: 2, sm: 0 }, // Margen inferior en móvil
-                        mr: { xs: 0, sm: 4 }, // Margen derecho en escritorio (separación de contenido)
+                        mb: { xs: 2, sm: 0 }, 
+                        mr: { xs: 0, sm: 4 }, 
                     }}
                 >
                     <Typography
