@@ -2,7 +2,7 @@ import Inputs from '../component/inputs';
 import BasicSwitches from '../component/Switch';
 import '../../assets/CSS/desing_organiza.css'
 import InfoIcon from '@mui/icons-material/Info';
-import Select from '../component/select';
+import Select from '../component/area/select';
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
 
 

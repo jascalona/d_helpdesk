@@ -10,25 +10,21 @@ import ErrorIcon from '@mui/icons-material/Error';
 // Las demás importaciones se mantienen
 import AdsClickIcon from '@mui/icons-material/AdsClick';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
+import Select from './select';
 
-
-const API_URL = 'http://localhost:8080/basetomee/empresas/registrar';
+const API_URL = 'http://localhost:8080/basetomee/area/registrar';
 
 // Definicion de la estructura de los datos del formulario para tipado
 interface FormData {
-    co_emp: string;
-    nb_emp: string;
-    st_estado: string;
-    autor: string;
+    nb_area: string;
+    co_empresa: string;
 }
 
 function CreateEmpresa() {
     // Estado para almacenar los valores del formulario
     const [formData, setFormData] = useState<FormData>({
-        co_emp: '',
-        nb_emp: '',
-        st_estado: '',
-        autor: ''
+        nb_area: '',
+        co_empresa: ''
     });
 
     // Estado para la clave del formulario. 
@@ -60,7 +56,7 @@ function CreateEmpresa() {
         setSuccess(false);
 
         // Validar que todos los campos no estén vacíos antes de enviar
-        if (!formData.co_emp || !formData.nb_emp || !formData.st_estado || !formData.autor) {
+        if (!formData.nb_area || !formData.co_empresa) {
             setError('Todos los campos son obligatorios.');
             setIsLoading(false);
             return;
@@ -79,10 +75,8 @@ function CreateEmpresa() {
 
             // Limpiar el formulario después de un registro exitoso
             setFormData({
-                co_emp: '',
-                nb_emp: '',
-                st_estado: '',
-                autor: ''
+                nb_area: '',
+                co_empresa: ''
             });
 
             // Incremento de la clave para forzar el reinicio de los Inputs
@@ -90,11 +84,11 @@ function CreateEmpresa() {
 
         } catch (err) {
             // Manejo de errores de Axios
-            console.error('Error al crear la empresa:', err);
+            console.error('Error al crear el Area:', err);
 
             let errorMessage = 'Error de red o el servidor no responde.';
             if (axios.isAxiosError(err) && err.response) {
-                errorMessage = err.response.data.message || `${err.response.data}: Intenta más tarde.`;
+                errorMessage = err.response.data.message || `${err.response.data}: .`;
             }
 
             setError(errorMessage);
@@ -109,49 +103,30 @@ function CreateEmpresa() {
         <>
             <div className="create-empresa">
                 <div className="formulario">
-                    <h2>Crear Empresa</h2>
+                    <h2>Crear Area</h2>
                     <form onSubmit={handleSubmit} key={formKey}>
                         {/* -------------------- Inputs -------------------- */}
+
+                        <Inputs
+                            label="Nombre del Area"
+                            placeholder="Por ejemplo, QA"
+                            required={true}
+                            errorMessage="El nombre debe tener al menos 3 caracteres y no contener símbolos."
+                            pattern="^[A-Za-z0-9\s]{3,100}$"
+                            value={formData.nb_area}
+                            onChange={(v) => handleChange('nb_area', v)}
+                        />
+
                         <Inputs
                             label="RIF"
                             placeholder="Por ejemplo, J123456789"
                             required={true}
                             errorMessage="El RIF debe tener al menos de 7 a 14 caracteres y no contener símbolos."
                             pattern="^[A-Za-z0-9]{7,14}$"
-                            value={formData.co_emp}
-                            onChange={(v) => handleChange('co_emp', v)}
+                            value={formData.co_empresa}
+                            onChange={(v) => handleChange('co_empresa', v)}
                         />
 
-                        <Inputs
-                            label="Nombre de Empresa"
-                            placeholder="Por ejemplo, Soluciones Sycom C.A"
-                            required={true}
-                            errorMessage="El nombre debe tener al menos 3 caracteres y no contener símbolos."
-                            pattern="^[A-Za-z0-9\s]{3,100}$"
-                            value={formData.nb_emp}
-                            onChange={(v) => handleChange('nb_emp', v)}
-                        />
-
-                        <Inputs
-                            label="Estado"
-                            placeholder="Por ejemplo, ACTIVO"
-                            required={true}
-                            errorMessage="El estado debe tener un rango comprendido de 3 a 10 caracteres y no contener símbolos."
-                            pattern="^[A-Za-z0-9\s]{3,10}$"
-                            value={formData.st_estado}
-                            onChange={(v) => handleChange('st_estado', v)}
-                        />
-
-
-                        <Inputs
-                            label="Autor"
-                            placeholder="Por ejemplo, Jose Escalona"
-                            required={true}
-                            errorMessage="El nombre debe contener solo letras y espacios."
-                            pattern="^[A-Za-z\s]{4,100}$"
-                            value={formData.autor}
-                            onChange={(v) => handleChange('autor', v)}
-                        />
                         {/* ----------------- Feedback al Usuario ----------------- */}
                         {isLoading && <p>Cargando, por favor espera...</p>}
                         {error && <p style={{ color: 'red', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}><ErrorIcon sx={{ color: 'red', textAlign: 'center' }} /> {error}</p>}
@@ -169,21 +144,6 @@ function CreateEmpresa() {
                 {/* ----------------- Options Plantillas ----------------- */}
                 <div className="options-plantillas">
 
-                    <Link to={"Area"} style={{ color: "#42526e" }}>
-                        <div className="plantilla">
-                            <div className="icon">
-                                <span>
-                                    <AdsClickIcon sx={{ fontSize: 40 }} />
-                                </span>
-                            </div>
-                            <div className="description-plantilla">
-                                <h3>Crear Area</h3>
-                                <small style={{ color: '#42526ec6', fontWeight: '300' }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, asperiores repellendus suscipit vitae sit quam est provident numquam doloribus similique.</small>
-                            </div>
-                        </div>
-                    </Link>
-
-
                     <Link to={"Subarea"} style={{ color: "#42526e" }}>
                         <div className="plantilla">
                             <div className="icon">
@@ -192,7 +152,21 @@ function CreateEmpresa() {
                                 </span>
                             </div>
                             <div className="description-plantilla">
-                                <h3>Crear Sub-area</h3>
+                                <h3>Crear Sub-Area</h3>
+                                <small style={{ color: '#42526ec6', fontWeight: '300' }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, asperiores repellendus suscipit vitae sit quam est provident numquam doloribus similique.</small>
+                            </div>
+                        </div>
+                    </Link>
+
+                    <Link to={"/ConfigGeneral/CreateEmpresa"} style={{ color: "#42526e" }}>
+                        <div className="plantilla">
+                            <div className="icon">
+                                <span>
+                                    <AdsClickIcon sx={{ fontSize: 40 }} />
+                                </span>
+                            </div>
+                            <div className="description-plantilla">
+                                <h3>Crear Empresa</h3>
                                 <small style={{ color: '#42526ec6', fontWeight: '300' }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, asperiores repellendus suscipit vitae sit quam est provident numquam doloribus similique.</small>
                             </div>
                         </div>
@@ -200,7 +174,7 @@ function CreateEmpresa() {
 
 
                     <div className="section-header" style={{ float: 'right', margin: '10px 30px' }}>
-                        <Link to={"/ConfigGeneral/EmpresaInt"} style={{ fontSize: '14px' }}>Ver Organizaciones</Link>
+                        <Link to={"/ConfigGeneral/AreaInt"} style={{ fontSize: '14px' }}>Ver Areas</Link>
                     </div>
 
                 </div>

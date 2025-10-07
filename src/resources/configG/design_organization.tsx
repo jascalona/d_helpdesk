@@ -2,7 +2,7 @@ import Inputs from '../component/inputs';
 import BasicSwitches from '../component/Switch';
 import '../../assets/CSS/desing_organiza.css'
 import InfoIcon from '@mui/icons-material/Info';
-import Select from '../component/select';
+import Select from '../component/area/select';
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import AdsClickIcon from '@mui/icons-material/AdsClick';
@@ -51,30 +51,30 @@ function DesingOrgan() {
                             </div>
 
                             <div className="descripton-setting">
-                                <p style={{fontWeight: 300}}>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Repellat, eos?</p>
+                                <p style={{ fontWeight: 300 }}>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Repellat, eos?</p>
                             </div>
                         </Link>
                     </article>
 
                     <article className='card-setting'>
+                        <Link to="/ConfigGeneral/CreateArea" style={{ fontSize: '14px', color: '#42526e' }} >
+                            <div className="card-header-setting">
 
-                        <div className="card-header-setting">
 
+                                <div className="icon-card">
+                                    <span><AdsClickIcon sx={{ fontSize: 28 }} /></span>
+                                </div>
 
-                            <div className="icon-card">
-                                <span><AdsClickIcon sx={{ fontSize: 28 }} /></span>
+                                <div className="title">
+                                    <h3>Crear Area</h3>
+                                    <small>Crea una nueva Area</small>
+                                </div>
                             </div>
 
-                            <div className="title">
-                                <h3>Crear Area</h3>
-                                <small>Crea una nueva Area</small>
+                            <div className="descripton-setting">
+                                <p style={{ fontWeight: 300 }}>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Repellat, eos?</p>
                             </div>
-                        </div>
-
-                        <div className="descripton-setting">
-                            <p>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Repellat, eos?</p>
-                        </div>
-
+                        </Link>
                     </article>
 
                     <article className='card-setting'>

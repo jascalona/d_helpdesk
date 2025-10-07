@@ -8,8 +8,14 @@ import ConfigGeneral from './resources/Config_general';
 //Para Rutas Absolutas
 import Themes from './resources/configG/Theme';
 import DesingOrgan from './resources/configG/design_organization';
-import CreateEmpresa from './resources/component/empresa/create_organizacion';
+
+//Empresa
+import CreateEmpresa from './resources/component/empresa/create_empresa';
 import EmpresaInt from './resources/component/empresa/empresaInt';
+
+//Area
+import CreateArea from './resources/component/area/create_area';
+import AreaInt from './resources/component/area/table';
 
 function App() {
 
@@ -27,8 +33,12 @@ function App() {
           <Route path="DesingOrgan/" element={<DesingOrgan />} />
 
           <Route path="CreateEmpresa" element={<CreateEmpresa />} />
-
           <Route path='EmpresaInt' element={<EmpresaInt />}/>
+
+
+        <Route path='CreateArea' element={<CreateArea />}/>
+        <Route path='AreaInt' element={<AreaInt />}/>
+
 
       </Route>
 
