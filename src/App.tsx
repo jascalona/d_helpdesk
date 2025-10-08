@@ -17,6 +17,11 @@ import EmpresaInt from './resources/component/empresa/empresaInt';
 import CreateArea from './resources/component/area/create_area';
 import AreaInt from './resources/component/area/table';
 
+
+//SubArea
+import CreateSubarea from './resources/component/subarea/create_subarea';
+import SubareaInt from './resources/component/subarea/table';
+
 function App() {
 
   return (
@@ -33,16 +38,20 @@ function App() {
           <Route path="DesingOrgan/" element={<DesingOrgan />} />
 
           <Route path="CreateEmpresa" element={<CreateEmpresa />} />
-          <Route path='EmpresaInt' element={<EmpresaInt />}/>
+          <Route path='EmpresaInt' element={<EmpresaInt />} />
 
 
-        <Route path='CreateArea' element={<CreateArea />}/>
-        <Route path='AreaInt' element={<AreaInt />}/>
+          <Route path='CreateArea' element={<CreateArea />} />
+          <Route path='AreaInt' element={<AreaInt />} />
+
+          <Route path='CreateSubarea' element={<CreateSubarea />}/>
+          <Route path='SubareaInt' element={<SubareaInt />}/>
+        
 
 
-      </Route>
+        </Route>
 
-    </Routes >
+      </Routes >
 
 
 

@@ -65,11 +65,11 @@ function Table_I() {
             "Fecha Registro": emp.fe_registro,
             "Autor": emp.autor,
         }));
-        
+
         const worksheet = XLSX.utils.json_to_sheet(dataForExport);
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, "Empresas");
-        
+
         XLSX.writeFile(workbook, "empresas_data.xlsx");
     };
 
@@ -112,18 +112,18 @@ function Table_I() {
             <div className="table-empresa">
                 <div className="options">
                     <div className="h">
-                    <h2>Organizaciones</h2>
-                    <small style={{fontSize: '12px'}}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error, aliquam!</small>
+                        <h2>Organizaciones</h2>
+                        <small style={{ fontSize: '12px' }}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error, aliquam!</small>
                     </div>
                     <div className="group-btn">
                         {/*  BOTON DE DESCARGA AGREGADO AQUÍ */}
-                        <Button style={{ fontSize: '20px', padding: '7px'}}
-                            type="button" 
-                            icon="pi pi-file-excel"  
-                            className="p-button-success" 
-                            onClick={exportExcel} 
+                        <Button style={{ fontSize: '20px', padding: '7px' }}
+                            type="button"
+                            icon="pi pi-file-excel"
+                            className="p-button-success"
+                            onClick={exportExcel}
                             disabled={empresas.length === 0} // Desactivar si no hay datos
-                        ><FileDownloadIcon sx={{fontSize: 15}}/></Button>
+                        ><FileDownloadIcon sx={{ fontSize: 15 }} /></Button>
                     </div>
                 </div>
 

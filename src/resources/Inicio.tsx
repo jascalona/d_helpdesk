@@ -49,21 +49,21 @@ function Inicio() {
           <nav className="nav-menu">
             <ul>
               <li className="active">
-                <span className="material-icons"><PersonIcon sx={{ fontSize: 20 }} /></span>
+                <span className="material-icons"><PersonIcon sx={{ fontSize: 22 }} /></span>
                 Para ti
               </li>
               <li>
-                <span className="material-icons"><WidgetsIcon sx={{ fontSize: 20 }} /></span>
+                <span className="material-icons"><WidgetsIcon sx={{ fontSize: 22 }} /></span>
                 Productos
               </li>
 
               <li>
-                <span className="material-icons"><MultilineChartIcon sx={{ fontSize: 20 }} /></span>
+                <span className="material-icons"><MultilineChartIcon sx={{ fontSize: 22 }} /></span>
                 Indicadores
               </li>
 
               <li>
-                <span className="material-icons"><DonutLargeIcon sx={{ fontSize: 20 }} /></span>
+                <span className="material-icons"><DonutLargeIcon sx={{ fontSize: 22 }} /></span>
                 Reportes
               </li>
 
@@ -87,27 +87,13 @@ function Inicio() {
           {/* Barra superior */}
           <header className="topbar">
 
-            <div className="">
-              <button onClick={handleOpenModal}><AddIcon sx={{ fontSize: 20 }} /> Crear</button>
-            </div>
-            <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-              {/* Aquí va el contenido del formulario del modal */}
-              <div className="form-content">
-                <label htmlFor="project">Proyecto *</label>
-                <input type="text" id="project" placeholder="Mi proyecto de scrum (SCRUM)" />
+          <div className="btn-open-menu">
+            open menu
+          </div>
 
-                <label htmlFor="activityType">Tipo de actividad *</label>
-                <select id="activityType">
-                  <option>Tarea</option>
-                </select>
-
-                <label htmlFor="summary">Resumen *</label>
-                <input type="text" id="summary" placeholder="Escriba un resumen" />
-              </div>
-            </Modal>
-
-
+      
             <div className="topbar-actions">
+
               <span className="dropdown-btn-icon">
                 <Notification />
               </span>
@@ -115,8 +101,7 @@ function Inicio() {
                 <BtnSetting />
               </span>
 
-
-              <span className="material-icons"><BackgroundLetterAvatars name='Jose Escalona'/></span>
+              <span className="material-icons"><BackgroundLetterAvatars name='Jose Escalona' /></span>
             </div>
           </header>
 
@@ -126,7 +111,7 @@ function Inicio() {
             <div className="recent-projects">
               <div className="section-header">
                 <h2>Productos recientes</h2>
-                <a href="#" style={{fontSize: '14px'}}>Ver todos los Productos</a>
+                <a href="#" style={{ fontSize: '14px' }}>Ver todos los Productos</a>
               </div>
 
               <div className="project-cards-container">
@@ -184,7 +169,7 @@ function Inicio() {
                     </div>
                   </div>
                 </div>
-                
+
 
               </div>
             </div>

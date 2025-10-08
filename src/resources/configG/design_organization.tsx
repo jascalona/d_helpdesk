@@ -62,7 +62,7 @@ function DesingOrgan() {
                     </article>
 
                     <article className='card-setting'>
-                        <Link to="/sub-area" style={{ fontSize: '14px', color: '#123336' }} >
+                        <Link to="/ConfigGeneral/CreateSubArea" style={{ fontSize: '14px', color: '#123336' }} >
 
                             <div className="card-header-setting">
 
