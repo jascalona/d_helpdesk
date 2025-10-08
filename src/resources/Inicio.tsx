@@ -78,7 +78,7 @@ function Inicio() {
             </ul>
           </nav>
           <div className="feedback-link">
-            <a href="#">Enviar comentarios</a>
+            <a href="#">Documentacion</a>
           </div>
         </aside>
 
@@ -87,7 +87,7 @@ function Inicio() {
           {/* Barra superior */}
           <header className="topbar">
 
-            <div className="btn">
+            <div className="">
               <button onClick={handleOpenModal}><AddIcon sx={{ fontSize: 20 }} /> Crear</button>
             </div>
             <Modal isOpen={isModalOpen} onClose={handleCloseModal}>

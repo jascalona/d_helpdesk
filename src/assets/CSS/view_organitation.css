@@ -21,13 +21,11 @@
 }
 
 .options button{
-    background: none;
+    background: var(--button);
+    color: var(--sidebar-text);
     border: solid 1px #7776b352;
 }
 
-.options button:hover{
-    background: #7776b352;
-}
 
 .tabla-empresa .p-datatable-thead>tr>th {
     color: #333;
@@ -51,58 +49,89 @@
 .tabla-empresa .p-datatable-tbody>tr:hover {
     background-color: #7776b31a;
 }
-/* Estilo del contenedor general del paginador */
+
+
+/* ========================================================= */
+/*  Contenedor General del Paginador (Fondo Oscuro)       */
+/* ========================================================= */
 .mi-paginador-personalizado {
-    padding: 7px;
-    color: #333; 
-    background-color: transparent; 
+    display: flex; 
+    align-items: center;
+    margin-top: 10px; 
+    justify-content: flex-end; /* Alinea todo a la derecha */
+    padding: 10px 20px; /* Más padding para el espacio */
+    background-color: var(--sidebar-bg); /* Fondo oscuro */
+    color: #e0e0e0; /* Color de texto general claro */
+    font-family: Arial, sans-serif;
+    border-radius: 8px; /* Bordes ligeramente redondeados para el contenedor */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Sombra sutil */
+    font-size: 14px;
 }
 
-/* 1. Estilo para los botones de navegación (iconos) */
-.mi-paginador-personalizado .p-paginator-icon {
-    color: #333 !important; 
-   }
+/* ========================================================= */
+/* Ocultar los Números de Página (y su contenedor)       */
+/* ========================================================= */
+.mi-paginador-personalizado .p-paginator-pages,
+.mi-paginador-personalizado .p-paginator-pages .p-paginator-page,
+.mi-paginador-personalizado .p-paginator-element.p-paginator-page {
+    display: none !important; /* Fuerza a ocultar todos los números de página */
+}
 
-/* 2. Estilo para el contenedor de los botones de los iconos (ej. flechas) */
+/* ========================================================= */
+/* Estilo para el texto de información (ej. "1-5 of 13") */
+/* ========================================================= */
+.mi-paginador-personalizado .p-paginator-current {
+    font-weight: bold; /* Hacer el texto más legible */
+    color: #f0f0f0; /* Color claro para el texto de información */
+    margin-right: 20px; /* Espacio a la derecha antes de las flechas */
+    font-size: 15px; /* Un poco más grande para destacar */
+}
+
+/* ========================================================= */
+/* Estilo de los Botones de Navegación (flechas)         */
+/* ========================================================= */
+
+/* Contenedores de las flechas (prev, next, first, last) */
 .mi-paginador-personalizado .p-paginator-first,
 .mi-paginador-personalizado .p-paginator-prev,
 .mi-paginador-personalizado .p-paginator-next,
 .mi-paginador-personalizado .p-paginator-last {
-    /* Color para el fondo o borde del botón si lo tiene */
-    /* background: transparent; */
+    background-color: transparent; /* Sin fondo en los botones */
+    border: none; /* Sin borde */
+    padding: 8px; /* Espacio interno para el clic */
+    margin: 0 8px; /* Espacio entre las flechas */
+    border-radius: 4px; /* Ligeramente redondeado */
+    transition: background-color 0.2s ease-in-out;
 }
 
-/* 3. Estilo para los botones de los números de página */
-.mi-paginador-personalizado .p-paginator-pages .p-paginator-page {
-    border-radius: 4px;
-    margin: 0 4px;
-    min-width: 2.5rem;
-    color: #333; 
-    background-color: transparent; 
+/* Iconos de las flechas */
+.mi-paginador-personalizado .p-paginator-icon {
+    font-size: 18px; /* Iconos más grandes y claros */
+    color: #e0e0e0 !important; /* Color claro para los iconos */
+}
+
+/* Estado hover de las flechas */
+.mi-paginador-personalizado .p-paginator-element:not(.p-disabled):hover {
+    background-color: #4a4a4a; /* Fondo sutil al pasar el ratón */
+    color: #ffffff; /* Icono más blanco al pasar el ratón */
+}
+
+/* Estado deshabilitado de las flechas */
+.mi-paginador-personalizado .p-disabled {
+    opacity: 0.4; /* Menos opaco para indicar deshabilitado */
+    cursor: not-allowed;
+    background-color: transparent !important;
+}
+
+/* Asegurarse de que el elemento base de paginador para las flechas 
+   no introduzca estilos no deseados */
+.mi-paginador-personalizado .p-paginator-element {
+    /* Resetea estilos si el p-paginator-element está afectando a las flechas */
+    min-width: unset;
+    height: unset;
+    line-height: unset;
+    text-align: unset;
     border: none;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-/* 4. Estilo para el número de página ACTIVO/SELECCIONADO */
-.mi-paginador-personalizado .p-paginator-pages .p-highlight {
-    color: #333; 
-    border: solid 1px #7776b346;
-    width: 7px;
-    font-size: 14px;
-    font-weight: 800;
-}
-
-/* 5. Estilo al pasar el ratón (HOVER) sobre los números y botones de icono */
-.mi-paginador-personalizado .p-paginator-pages .p-paginator-page:not(.p-highlight):hover,
-.mi-paginador-personalizado .p-paginator-first:not(.p-disabled):hover,
-.mi-paginador-personalizado .p-paginator-prev:not(.p-disabled):hover,
-.mi-paginador-personalizado .p-paginator-next:not(.p-disabled):hover,
-.mi-paginador-personalizado .p-paginator-last:not(.p-disabled):hover {
-    background-color: #7776b31a; /* Un color de fondo suave al pasar el ratón */
-    color: #333; /* Asegura que el color de la letra/icono se mantenga */
-}
-
-/* 6. Estilo para los botones DESHABILITADOS (ej. flecha 'primera' en la página 1) */
-.mi-paginador-personalizado .p-disabled .p-paginator-icon {
-    color: #a7a5a5 !important; /* Un gris claro para indicar que está deshabilitado */
+    box-sizing: unset;
+    font-size: unset;
 }

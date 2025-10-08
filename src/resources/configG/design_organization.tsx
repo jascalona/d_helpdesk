@@ -1,27 +1,11 @@
-import Inputs from '../component/inputs';
-import BasicSwitches from '../component/Switch';
 import '../../assets/CSS/desing_organiza.css'
-import InfoIcon from '@mui/icons-material/Info';
-import Select from '../component/area/select';
-import { Routes, Route, Link, Outlet } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import AdsClickIcon from '@mui/icons-material/AdsClick';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 
 
 function DesingOrgan() {
-    const empresa = [
-        { value: "", label: "-- Seleccione una empresa --" },
-        { value: "Soluciones Sycom", label: "Soluciones Sycom" },
-    ];
-
-    const area = [
-        { value: "", label: "-- Seleccione un area --" },
-        { value: "Ingenieria", label: "Ingenieria" },
-        { value: "Gestion de Servicios", label: "Gestion de Servicios" },
-
-    ];
-
     return (
         <>
             <h1>Configuracion General</h1>
@@ -37,7 +21,7 @@ function DesingOrgan() {
 
 
                     <article className='card-setting'>
-                        <Link to="/ConfigGeneral/CreateEmpresa" style={{ fontSize: '14px', color: '#42526e' }}>
+                        <Link to="/ConfigGeneral/CreateEmpresa" style={{ fontSize: '14px', color: '#123336' }}>
                             <div className="card-header-setting">
 
                                 <div className="icon-card">
@@ -57,7 +41,7 @@ function DesingOrgan() {
                     </article>
 
                     <article className='card-setting'>
-                        <Link to="/ConfigGeneral/CreateArea" style={{ fontSize: '14px', color: '#42526e' }} >
+                        <Link to="/ConfigGeneral/CreateArea" style={{ fontSize: '14px', color: '#123336' }} >
                             <div className="card-header-setting">
 
 
@@ -78,39 +62,45 @@ function DesingOrgan() {
                     </article>
 
                     <article className='card-setting'>
-                        <div className="card-header-setting">
+                        <Link to="/sub-area" style={{ fontSize: '14px', color: '#123336' }} >
 
-                            <div className="icon-card">
-                                <span><WorkspacesIcon sx={{ fontSize: 28 }} /></span>
+                            <div className="card-header-setting">
+
+                                <div className="icon-card">
+                                    <span><WorkspacesIcon sx={{ fontSize: 28 }} /></span>
+                                </div>
+
+                                <div className="title">
+                                    <h3>Nueva Sub-area</h3>
+                                    <small>Crea una nueva sub-area</small>
+                                </div>
                             </div>
 
-                            <div className="title">
-                                <h3>Nueva Sub-area</h3>
-                                <small>Crea una nueva sub-area</small>
+                            <div className="descripton-setting">
+                                <p>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Repellat, eos?</p>
                             </div>
-                        </div>
-
-                        <div className="descripton-setting">
-                            <p>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Repellat, eos?</p>
-                        </div>
+                        </Link>
                     </article>
 
 
                     <article className='card-setting'>
-                        <div className="card-header-setting">
-                            <div className="icon-card">
-                                <span><AddBusinessIcon sx={{ fontSize: 28 }} /></span>
+                        <Link to="/Otros" style={{ fontSize: '14px', color: '#123336' }} >
+
+                            <div className="card-header-setting">
+                                <div className="icon-card">
+                                    <span><AddBusinessIcon sx={{ fontSize: 28 }} /></span>
+                                </div>
+
+                                <div className="title">
+                                    <h3>Otros...</h3>
+                                    <small>Crea una nueva organizacion</small>
+                                </div>
                             </div>
 
-                            <div className="title">
-                                <h3>Otros...</h3>
-                                <small>Crea una nueva organizacion</small>
+                            <div className="descripton-setting">
+                                <p>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Repellat, eos?</p>
                             </div>
-                        </div>
-
-                        <div className="descripton-setting">
-                            <p>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Repellat, eos?</p>
-                        </div>
+                        </Link>
                     </article>
                 </div>
 

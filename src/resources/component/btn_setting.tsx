@@ -33,26 +33,26 @@ const BtnSetting = () => {
                     </div>
 
                     <div className="option-setting"><PersonIcon />
-                        <li className='alert-setting'><Link to="ConfigGeneral/Themes">Configuracion General</Link><br />
+                        <li className='alert-setting'><Link to="/ConfigGeneral/Themes" style={{color: '#061112'}}>Configuracion General</Link><br />
                             <small>Ajusta tus preferencias personales</small>
                         </li>
                     </div>
 
 
                     <div className="option-setting"><AppsOutageIcon />
-                        <li className='alert-setting'>Componentes <br />
+                        <li className='alert-setting' style={{color: '#061112'}}>Componentes <br />
                             <small>Gestiona y configura componentes para tus productos o proyectos.</small>
                         </li>
                     </div>
 
                     <div className="option-setting"><GridViewIcon />
-                        <li className='alert-setting'><a href="#">Nuevo Producto </a><br />
+                        <li className='alert-setting'><Link to="Nuveo rpoducto" style={{color: '#061112'}}> Nuevo Producto </Link><br />
                             <small>Integra y configura tu portafolio productos.</small>
                         </li>
                     </div>
 
                     <div className="option-setting"><GroupsIcon />
-                        <li className='alert-setting'><a href="#">Gestion de Usuarios </a><br />
+                        <li className='alert-setting'><Link to="Nuveo rpoducto" style={{color: '#061112'}}>Gestion de Usuarios </Link><br />
                             <small>Gestiona usuarios, grupos y solicitudes de acceso.</small>
                         </li>
                     </div>

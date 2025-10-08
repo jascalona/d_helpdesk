@@ -111,11 +111,13 @@ function Table_I() {
 
             <div className="table-empresa">
                 <div className="options">
-                    <h3>Organizaciones</h3>
-
+                    <div className="h">
+                    <h2>Organizaciones</h2>
+                    <small style={{fontSize: '12px'}}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error, aliquam!</small>
+                    </div>
                     <div className="group-btn">
                         {/*  BOTON DE DESCARGA AGREGADO AQUÍ */}
-                        <Button style={{color: '#5A639C', fontSize: '20px', padding: '7px'}}
+                        <Button style={{ fontSize: '20px', padding: '7px'}}
                             type="button" 
                             icon="pi pi-file-excel"  
                             className="p-button-success" 
